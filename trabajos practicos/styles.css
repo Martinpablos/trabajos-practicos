@@ -1,15 +1,12 @@
-.contain__nav {
-    background: #3338;
-    display:flex;
-    flex-direction: column;
+.mi-tarjeta-especial {
+    border: none;
+    text-align: center;
+    border-radius: 15px; /* Bordes más redondeados */
+    transition: transform 0.3s ease; /* Efecto fluido */
 }
 
-
-.row {
-    display: grid;
-    grid-area: 
-    "nav"
-    "header"
-    "main"
-    "footer";
+.mi-tarjeta-especial:hover {
+    transform: scale(1.05); /* Se agranda un poquito al pasar el mouse */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+
