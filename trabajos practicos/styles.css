@@ -1,0 +1,15 @@
+.contain__nav {
+    background: #3338;
+    display:flex;
+    flex-direction: column;
+}
+
+
+.row {
+    display: grid;
+    grid-area: 
+    "nav"
+    "header"
+    "main"
+    "footer";
+}
