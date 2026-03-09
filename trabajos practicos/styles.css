@@ -1,12 +1,21 @@
-.mi-tarjeta-especial {
-    border: none;
-    text-align: center;
-    border-radius: 15px; /* Bordes más redondeados */
-    transition: transform 0.3s ease; /* Efecto fluido */
+body {
+    background: #161917;
+    color: #333;
 }
 
-.mi-tarjeta-especial:hover {
-    transform: scale(1.05); /* Se agranda un poquito al pasar el mouse */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
+.contain {
+    width: 100%;
+    max-width: 1200px;
 }
 
+.sidebar__panel {
+    background: #dd8;
+    box-shadow: 0 0 15px #dd85;
+    border-radius: 40px;
+}
+.sidebar__content {
+    padding: 0 10px;
+    font-size: 0.9em;
+    height: 60vh;
+}
