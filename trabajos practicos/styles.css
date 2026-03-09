@@ -19,3 +19,12 @@ body {
     font-size: 0.9em;
     height: 60vh;
 }
+
+.sidebar__img {
+    border-radius: 100%;
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    width: 90%;
+    height: 20%;
+}
