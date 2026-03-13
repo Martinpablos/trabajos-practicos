@@ -1,10 +1,10 @@
 body {
-    background: #11111f;
+    background: #fff;
     color: #333;
 }
 
-img {
-    max-height: 140px;
+.aside__img {
+    max-width: 120px;
     border-radius: 100%;
     display: flex;
     margin: auto;
@@ -12,20 +12,20 @@ img {
     box-shadow: 0 0 25px #7fd4;
 }
 
-.sidebar__content {
+
+.aside__panel {
     text-align: center;
     color: bisque; 
-    margin-top: 10px;
-    padding-top: 15px;
 }
 
 .aside___h3 {
-    text-transform: uppercase;
     font-size: 1em;
 }
 
 span {
+    font-size: 1.2em ;
     color: aquamarine;
+    text-transform: uppercase;
 }
 
 .aside___h4 {
@@ -33,30 +33,39 @@ span {
     opacity: 0.9;
     text-transform: uppercase;
 }
-.aside___h5 {
-    margin-top: 30px;
+.aside__dates{
     font-size: 0.8em;
     opacity: 0.8;
-}
-
-p{
-    margin: 4px 0;
+    list-style: none;
 }
 
 .aside__icons {
     margin: 10px 0;
 }
 
+.aside__link {
+    padding: 50px;
+}
 
-.aside__button {
+
+.aside__link {
     display: flex;
     flex-direction: column;
     margin: auto;
     width: 10vw;
+    text-decoration: none;
     border-radius: 10px;
     background:aquamarine;
     margin-top: 10px;
-    color: black;
+    padding: 3px;
+    color: #333;
+    font-size: 0.7em;
+}
+
+.aside__link:hover {
+    box-shadow: 0 0 15px #777;
+    transition: 0.2s;
+    transform: scale(1.1);
 }
 
 .header__h3 {
@@ -64,6 +73,16 @@ p{
     text-transform: capitalize;
 }
 
-.header__items {
+a {
     color: #fff9;
+}
+
+
+.layout__main {
+    min-height: 400px;
+}
+
+.nav__icons {
+    padding-right: 10px ;
+    border-right: 1px solid #666 ;
 }
