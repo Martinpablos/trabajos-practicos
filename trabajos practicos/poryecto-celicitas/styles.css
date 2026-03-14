@@ -1,0 +1,25 @@
+.layout__navbar {
+    width: 100%;
+    background: #cddebb;
+    display: flex;
+    width: 150px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #222;
+    background-image: url(/imagenes-iconos/);
+}
+
+.header__link {
+    text-decoration: none;
+    color: #222;
+}
+
+.layout__header {
+    border-bottom: 2px solid #222 ;
+}
+
+.header__img {
+    height: 160px;
+}
