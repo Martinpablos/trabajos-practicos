@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="styles.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+<!--nav-->
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar col layout__navbar">
-                <div class="container">
-                    <input type="search" class="nav__search" placeholder="cual es tu antojo hoy?" title="escribe algo">
+            <nav class="navbar col layout__nav">
+                <div class="container layout__container">
+                    <i class="bi bi-search">
+                    <input type="search" class="nav__search" placeholder="cual es tu antojo hoy?" title="escribe algo"></i>
                     <form class="d-flex">
-                        <a href="#" title="instagram" class="px-3 nav__link">ins</a>
-                        <a href="#" title="facebook" class="px-3 nav__link">fb</a>
+                        <a href="#" title="instagram" class="px-3 nav__link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="facebook" class="px-3 nav__link"><i class="bi bi-facebook"></i></a>
                     </form>
                 </div>
             </nav>
         </div>
     </div>
-    <div class="container">
-        <header class="row mt-3 pb-4 layout__header">
+
+<!--header-->
+
+    <div class="container layout__container">
+        <header class="row mt-1 pb-2 layout__header">
             <div class="col-7 d-flex align-items-center justify-content-center">
             <section class="d-flex gap-5 header__links">
                 <a href="#" class="header__link">todas las recetas</a>
@@ -32,9 +38,65 @@
             </section>
             </div>
             <div class="col-5">
-            <img src="/imagenes-iconos/celicita-obrador-gluten-free.jpeg" class="img-fluid header__img">
+            <img src="/imagenes celi/WhatsApp Image 2026-03-13 at 23.29.03-fotor-bg-remover-20260314193241.png" class="img-fluid  header__img">
             </div>
         </header>
     </div>
+
+<!--contenido principal-->
+
+    <main>
+        <div class="container layout__container">
+            <div class="row mt-4">
+                <div class="container d-flex text-center">
+                    <div class="col-3">
+                        <p class="text-capitalize main__texthead">recetas sencillas que <br> te haran sentir bien</p>
+                    </div>
+                    <div class="col-6">
+                        <h2 class="text-uppercase main__title">recetas</h2>
+                    </div>
+                    <div class="col-3 pt-2">
+                        <a href="#" class="text-black text-uppercase text-decoration-none main__linkhead">mostrar mas</a><i class="bi bi-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card main__card">
+                        <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
+                        <div class="card-body text-center">
+                            <p>descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">receta</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card main__card">
+                        <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
+                        <div class="card-body text-center">
+                            <p>descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">receta</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card main__card">
+                        <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
+                        <div class="card-body text-center">
+                            <p>descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">receta</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card main__card">
+                        <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
+                        <div class="card-body text-center">
+                            <p>descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">receta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

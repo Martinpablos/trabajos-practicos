@@ -1,8 +1,10 @@
-.layout__navbar {
+
+/*seccion navegador*/
+
+.layout__nav {
     width: 100%;
     background: #cddebb;
     display: flex;
-    width: 150px;
 }
 
 .nav__link {
@@ -11,6 +13,23 @@
     background-image: url(/imagenes-iconos/);
 }
 
+.nav__search {
+    border: none;
+    border-radius: 20px;
+    opacity: 0.7;
+    background: transparent;
+    color: #444;
+}
+
+.layout__container {
+    max-width: 900px ;
+    width: 100%;
+}
+
+
+
+/*seccion header*/
+
 .header__link {
     text-decoration: none;
     color: #222;
@@ -18,8 +37,18 @@
 
 .layout__header {
     border-bottom: 2px solid #222 ;
+    font-weight: 100;
 }
 
 .header__img {
-    height: 160px;
+    height: 140px;
+    width: 100%;
+}
+
+/*main*/
+
+.main__card:hover {
+    transform: scale(1.01);
+    transition: 250ms;
+    box-shadow: 0 0 10px #3337;
 }
