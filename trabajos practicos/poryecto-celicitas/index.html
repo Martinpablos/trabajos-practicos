@@ -10,10 +10,11 @@
 </head>
 <body>
 <!--nav-->
-    <div class="container-fluid">
+    <div class="layout__nav">
+    <section class="container">
         <div class="row">
-            <nav class="navbar col layout__nav">
-                <div class="container layout__container">
+            <nav class="navbar col">
+                <div class="container-fluid layout__container">
                     <i class="bi bi-search">
                     <input type="search" class="nav__search" placeholder="cual es tu antojo hoy?" title="escribe algo"></i>
                     <form class="d-flex">
@@ -23,32 +24,34 @@
                 </div>
             </nav>
         </div>
+    </section>
     </div>
 
 <!--header-->
 
-    <div class="container layout__container">
+    <section class="container layout__container">
         <header class="row mt-1 pb-2 layout__header">
             <div class="col-7 d-flex align-items-center justify-content-center">
-            <section class="d-flex gap-5 header__links">
+            <div class="d-flex justify-content-between header__links">
                 <a href="#" class="header__link">todas las recetas</a>
                 <a href="#" class="header__link">vegano</a>
                 <a href="#" class="header__link">comercio</a>
                 <a href="#" class="header__link">acerca de</a>
-            </section>
+            </div>
             </div>
             <div class="col-5">
-            <img src="/imagenes celi/WhatsApp Image 2026-03-13 at 23.29.03-fotor-bg-remover-20260314193241.png" class="img-fluid  header__img">
+            <img src="/imagenes celi/logo-celi.png.png" class="img-fluid  header__img">
             </div>
         </header>
-    </div>
+    </section>
 
-<!--contenido principal-->
+<!--main-->
+<!--main-title-->
 
-    <main>
-        <div class="container layout__container">
+    <main class="container d-flex justify-content-center">
+        <div class="layout__container">
             <div class="row mt-4">
-                <div class="container d-flex text-center">
+                <div class="d-flex text-center">
                     <div class="col-3">
                         <p class="text-capitalize main__texthead">recetas sencillas que <br> te haran sentir bien</p>
                     </div>
@@ -59,44 +62,81 @@
                         <a href="#" class="text-black text-uppercase text-decoration-none main__linkhead">mostrar mas</a><i class="bi bi-arrow-right"></i>
                     </div>
                 </div>
-                <div class="col-3">
+
+<!--main-card-->
+
+                <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="card main__card">
                         <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
                         <div class="card-body text-center">
-                            <p>descripcion de la comida (algun detalle)</p>
-                            <div class="btn border card__btn">receta</div>
+                            <p class="card__text">descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">nuevas recetas</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="card main__card">
                         <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
                         <div class="card-body text-center">
-                            <p>descripcion de la comida (algun detalle)</p>
-                            <div class="btn border card__btn">receta</div>
+                            <p class="card__text">descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">comer sano</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="card main__card">
                         <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
                         <div class="card-body text-center">
-                            <p>descripcion de la comida (algun detalle)</p>
-                            <div class="btn border card__btn">receta</div>
+                            <p class="card__text">descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">postres</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="card main__card">
                         <img src="/imagenes celi/recetas.jpeg" class="img-fluid main__img">
                         <div class="card-body text-center">
-                            <p>descripcion de la comida (algun detalle)</p>
-                            <div class="btn border card__btn">receta</div>
+                            <p class="card__text">descripcion de la comida (algun detalle)</p>
+                            <div class="btn border card__btn">favoritos</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+            <div class="mt-4 text-uppercase text-center ">
+                <h3 class="layout__entrepaginas">sobre ustedes</h3>
+            </div>
+
+<!--main-hoster-->
+
+            
+            <section class="card mt-4 text-center hoster__card">
+                <div class="row g-0">
+                    <div class="col-sm-6">
+                        <div class="card-body hoster__cardbody">
+                        <h4 class="card-text pt-5 card__subtitulo">favorito de la semana</h4>
+                        <h2 class="card-title py-3 card__titulo">roulade-arrolado de merengue, suave y liviano.</h2>
+                        <p class="card-text card__description">arrollado con frosting de queso crema + reduccion de frutos rojos + frutas frescas de estacion (cerezas), terminacion con mas frosting + cerezas y hojas de menta fresca.</p>
+                        <div class="btn hoster__btn">ver receta</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="/imagenes celi/recetas.jpeg" class="img-fluid rounded-end hoster__img" alt="que delicia">
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
+    
+<!--formulario de contacto-->
+
+
+    <!--footer-->
+
+    <footer class="container-fluid bg-dark">
+        <
+    </footer>
 </body>
 </html>

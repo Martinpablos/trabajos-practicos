@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family:'Montserrat', sans-serif;
+}
+
 
 /*seccion navegador*/
 
@@ -22,7 +29,7 @@
 }
 
 .layout__container {
-    max-width: 900px ;
+    max-width: 850px ;
     width: 100%;
 }
 
@@ -35,6 +42,10 @@
     color: #222;
 }
 
+.header__links {
+    width: 100%;
+}
+
 .layout__header {
     border-bottom: 2px solid #222 ;
     font-weight: 100;
@@ -45,10 +56,77 @@
     width: 100%;
 }
 
+
+/*enlaces entre paginas*/
+.layout__entrepaginas {
+    color:#859474;
+}
+
+
 /*main*/
 
 .main__card:hover {
     transform: scale(1.01);
     transition: 250ms;
-    box-shadow: 0 0 10px #3337;
+    box-shadow: 0 0 5px #3337;
+}
+
+.main__title {
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.card__btn {
+    background:#ffc484;
+}
+
+.card__btn:hover {
+    background: #ffd8af;
+    border: none;
+}
+
+
+/*hoster-main*/
+
+.hoster__card {
+    background: #fcf7f2 ;
+    max-width: 100%;
+}
+
+.card__subtitulo {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.card__titulo {
+    text-transform: capitalize;
+    font-size: 2em;
+    font-weight: 700;
+    color: #222;
+}
+
+.card__description {
+    font-size: 0.9em;
+    font-family:;
+    font-weight: 100;
+}
+
+.hoster__btn {
+    margin-top: 20px;
+    font-size: 0.8em;
+    padding: 8px 20px;
+    border: 2px solid #3339;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.hoster__btn:hover {
+    border:none;
+    background: #fda6 ;
+}
+
+.hoster__img {
+    max-height: 460px;
+    width: 100%;
 }
