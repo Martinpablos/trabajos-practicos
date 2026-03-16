@@ -11,7 +11,6 @@ body {
 .layout__nav {
     width: 100%;
     background: #cddebb;
-    display: flex;
 }
 
 .nav__link {
@@ -91,6 +90,9 @@ body {
 .hoster__card {
     background: #fcf7f2 ;
     max-width: 100%;
+    border: none;
+    box-shadow: 1px 0 5px #777;
+    border-radius: 4px;
 }
 
 .card__subtitulo {
@@ -129,4 +131,74 @@ body {
 .hoster__img {
     max-height: 460px;
     width: 100%;
+}
+
+
+/*carousel*/
+
+.carousel {
+    margin: 40px auto;
+    display: flex;
+    overflow-x: auto;
+    background: #fda6;
+    box-shadow: 0 0 10px #2226;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    animation: spin 10s infinite linear;
+    padding-left: 15px ;
+    opacity: 0.9;
+}
+
+.carousel__card {
+    flex: 0 0 5em;
+    height: 7em;
+    font-size: 3rem;
+    border-radius: 2px;
+    text-align: center;
+    align-content: center;
+}
+
+
+@keyframes spin {
+    from {translate: 0;}
+    to {translate: -100%;}
+}
+
+
+/*footer*/
+
+.footer__text {
+    text-transform: uppercase;
+}
+
+.footer__enlaces {
+    border-top: 2px solid #222;
+    padding-top: 30px;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer__logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    box-shadow: 0 0 5px #333;
+    margin-bottom: 10px;
+}
+
+.footer__logo:hover {
+    transform: scale(1.1);
+    transition: 250ms;
 }
