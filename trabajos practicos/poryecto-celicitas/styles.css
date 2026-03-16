@@ -183,6 +183,8 @@ body {
 .footer__enlaces {
     border-top: 2px solid #222;
     padding-top: 30px;
+    display: block;
+    margin: auto;
 }
 
 .footer__link {
