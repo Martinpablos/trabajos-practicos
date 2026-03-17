@@ -39,6 +39,7 @@ body {
 .header__link {
     text-decoration: none;
     color: #222;
+    padding:0 26px 0 0;
 }
 
 .header__links {
@@ -70,6 +71,10 @@ body {
     box-shadow: 0 0 5px #3337;
 }
 
+.main__card {
+    padding-bottom: 30px;
+}
+
 .main__title {
     font-size: 1.8em;
     font-weight: 600;
@@ -77,6 +82,10 @@ body {
 
 .card__btn {
     background:#ffc484;
+    text-decoration: none;
+    color: inherit;
+    padding:7px ;
+    border-radius: 6px;
 }
 
 .card__btn:hover {
