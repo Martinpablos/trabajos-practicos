@@ -1,0 +1,53 @@
+body {
+    background:#ebe8e8;
+}
+
+
+.layout__card {
+    margin: auto;
+    margin-top: 100px;
+    width: 740px;
+    height: 740px;
+}
+
+.img__card {
+    filter: blur(2px);
+}
+
+.glass__card {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    background: #aaa5;
+    border-radius: 25px;
+    color: #cddebb;
+}
+
+
+.card__title {
+    font-size: 2.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+
+.card__form {
+    max-width: 400px;
+    padding: 5px 20px;
+    margin: auto;
+    border-radius: 8px;
+    margin: 30px;
+    font-size: 16px;
+}
+
+
+.card__casillas {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 0;
+    background: transparent;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin: 5px;
+    color: #ddd;
+}

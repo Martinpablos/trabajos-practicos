@@ -72,7 +72,8 @@ body {
 }
 
 .main__card {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .main__title {
@@ -190,7 +191,6 @@ body {
 }
 
 .footer__enlaces {
-    border-top: 2px solid #222;
     padding-top: 30px;
     display: block;
     margin: auto;
