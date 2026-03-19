@@ -39,7 +39,8 @@ body {
 .header__link {
     text-decoration: none;
     color: #222;
-    padding:0 26px 0 0;
+    padding:0 22px 0 0;
+    font-size: 1em;
 }
 
 .header__links {
