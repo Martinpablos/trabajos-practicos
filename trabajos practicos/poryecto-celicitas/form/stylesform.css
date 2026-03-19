@@ -1,58 +1,82 @@
-body {
-    background:#ebe8e8;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+body {
+    background: #cdb;
+    margin: auto;
+    font-family:'Montserrat', sans-serif;
+}
 
 .layout__card {
+    max-width: 850px;
+    width: 100%;
+    height: 100%;
+    display: flex;
     margin: auto;
-    margin-top: 100px;
-    width: 740px;
-    height: 740px;
-    background: transparent;
-    border: none;
+    margin-top:100px;
+    margin-bottom: 100px;
+    background: #fefefe;
+    border-radius: 0px;
+    box-shadow: 0 0 15px #3336;
 }
 
-.img__card {
-    filter: blur(2px);
-    border-radius: 50px;
-    border: 2px solid #333;
-    border-radius: 50px;
+.layout__form {
+    padding:20px 10px 10px 40px;
 }
 
-.glass__card {
-    width: 500px;
-    height: 500px;
-    margin: auto;
-    background: #aaa5;
-    border-radius: 50px;
-    color: #cddebb;
+.form__firma {
+    font-family:'Times New Roman', Times, serif;
+    font-style:italic;
 }
-
 
 .card__title {
-    font-size: 2.1em;
     text-transform: uppercase;
-    display: flex;
-    justify-content: center;
+    padding-top: 20px;
+    font-weight: 600;
+    color: ;
+}
+
+.card__subtitle {
+    font-size: 0.8em;
 }
 
 .card__form {
-    max-width: 400px;
-    padding: 5px 20px;
-    margin: auto;
-    border-radius: 8px;
-    margin: 30px;
-    font-size: 16px;
+    display:flex;
+    flex-direction: column;
 }
 
+.card__label{
+    margin-top: 30px;
+    opacity: 0.6;
+}
 
-.card__casillas {
+.form__casillas {
     width: 100%;
-    box-sizing: border-box;
-    padding: 8px 0;
-    background: transparent;
-    border: 1px solid #555;
-    border-radius: 5px;
-    margin: 5px;
-    color: #ddd;
+    border: none;
+    border-bottom: 1px solid #333;
+}
+
+.form__textarea {
+    width: 100%;
+    margin-top:20px ;
+}
+
+#form__submit {
+    border: none;
+    background: #cdb;
+    border-radius: 2px;
+    padding:5px 15px;
+    margin: 10px 0;
+}
+
+#form__submit:hover {
+    transform:scale(1.1);
+    transition: 250ms;
+}
+
+.form__link {
+    margin-top: 20px;
+}
+
+.form__img {
+    height: 100%;
 }

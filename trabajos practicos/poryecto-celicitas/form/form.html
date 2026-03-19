@@ -1,38 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="stylesform.css" rel="stylesheet">
     <title>formulario</title>
 </head>
 <body>
     <div class="card layout__card">
-        <img src="/imagenes celi/celi-fondo-form.jpeg" class="img card-img img__card">
-        <div class="card-img-overlay glass__card">
-            <form class="card__form">
-                <fieldset>
-                    <legend class="card__title">basic dat</legend>
-                    <div>
-                        <label>name
-                            <input class="card__casillas" type="text">
-                        </label>
-                    </div>
-                    <div>
-                        <label>email
-                            <input class="card__casillas" type="email">
-                        </label>
-                    </div>
-                    <div>
-                        <label>asunto
-                            <textarea rows="6" name="escribe algo" class="card__casillas">
-                            </textarea>
-                        </label>
-                    </div>
-                </fieldset>
-            </form>
+        <div class="row">
+            <div class="col-12 col-md-7">
+                <form class="card-body layout__form">
+                    <p class="form__firma">celicitas.</p>
+                        <h2 class="card-title card__title">hello there</h2>
+                        <h4 class="card-text card__subtitle">You need to complete the form to continue.</h4>
+                        <div class="card__form">
+                            <label class="card__label">name
+                                <input class="form__casillas" type="text">
+                            </label>
+                            <label class="card__label">email
+                                <input class="form__casillas" type="email">
+                            </label>
+                            <label class="card__label">asunto
+                                <textarea rows="6" name="escribe algo" class="form__textarea">
+                                </textarea>
+                            </label>    
+                        </div>
+                        <input type="submit" id="form__submit">
+                        <p class="form__link">do you have acount?
+                        <a href="#">sig in!</a></p>
+                </form>
+            </div>
+            <div class="col-12 col-md-5">
+                <img src="/imagenes celi/celi-fondo.jpeg" class="img-fluid form__img">
+            </div>
         </div>
     </div>
 </body>
