@@ -16,7 +16,9 @@ body {
 .nav__link {
     text-decoration: none;
     color: #222;
-    background-image: url(/imagenes-iconos/);
+    display: flex;
+    align-items: center;
+    font-size: 22px;
 }
 
 .nav__search {
