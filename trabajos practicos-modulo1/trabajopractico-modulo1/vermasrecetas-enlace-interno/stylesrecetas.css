@@ -69,6 +69,17 @@ body {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+    margin-bottom: 40px;
+}
+
+.carousel__content{
+    height: 500px;
+}
+
+.carousel__content:hover {
+    transform: scale(1.01);
+    transition: 250ms;
+    box-shadow: 0 0 5px #3337;
 }
 
 .carousel__img {
@@ -103,4 +114,35 @@ body {
     margin-top: 20px;
     text-transform: uppercase;
     opacity: 0.8;
+}
+
+/*footer*/
+
+.footer__text {
+    text-transform: uppercase;
+    margin:auto;
+}
+
+.footer__enlaces {
+    padding-top: 30px;
+    display: block;
+    margin: auto;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer__logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    box-shadow: 0 0 5px #333;
+    margin-bottom: 10px;
+}
+
+.footer__logo:hover {
+    transform: scale(1.1);
+    transition: 250ms;
 }
