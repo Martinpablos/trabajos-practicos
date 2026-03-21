@@ -11,7 +11,12 @@ body {
 
 .layout__nav {
     width: 100%;
+}
+
+.layout__navbar {
+    position: fixed;
     background: #cddebb;
+    z-index: 40;
 }
 
 .nav__link {
@@ -48,6 +53,7 @@ body {
 
 .header__links {
     width: 100%;
+    margin-top: 35px;
 }
 
 .layout__header {
@@ -58,6 +64,7 @@ body {
 .header__img {
     height: 140px;
     width: 100%;
+        margin-top: 30px;
 }
 
 
