@@ -1,0 +1,15 @@
+div {
+    color:aqua; 
+}
+
+h1 {
+    color: yellowgreen !important;
+}
+
+.class-color {
+    color: blueviolet;
+}
+
+#id-color {
+    color: violet ; 
+}

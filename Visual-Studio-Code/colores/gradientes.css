@@ -1,0 +1,26 @@
+body {
+    background-color: #ed0;
+    margin: 0;
+}
+
+.box {
+    width: 100%;
+    height: 800px;
+    background: linear-gradient(#0009, transparent) ;
+    margin: 0;
+    margin: auto;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    padding-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 20px;
+    font-size: 30px;
+    font-weight: 600;
+}

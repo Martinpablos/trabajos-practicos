@@ -1,0 +1,48 @@
+body {
+    width: 160px;
+    height: 200px;
+    font-size: 10px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 15px 3px #d60;
+}
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 40px;
+    text-decoration:underline 0.1px #777;
+}
+
+.email {
+    background-color: transparent;
+    margin-top: 40px;
+    font-size: 8px;
+    margin-left: 35px;
+    width: 80px;
+    border: none;
+    border-bottom: 1px solid #333;
+}
+
+.password {
+    background-color: transparent;
+    border: none;
+    margin-left: 35px;
+    width: 80px;
+    border-bottom: 1px solid #333;
+    font-size: 8px;
+}
+
+.submit {
+    background-color: #d60;
+    border: none;
+    margin-left: 35px;
+    margin-top: 9px;
+    width: 40px;
+    font-size: 9px;
+    border-radius: 3px;
+    box-shadow: 0 0.5px 3px 0.1px #d60;
+    color: white;
+}

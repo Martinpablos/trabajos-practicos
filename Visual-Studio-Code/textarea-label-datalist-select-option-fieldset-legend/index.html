@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="(width=device-width) initial-scale=1.0" >
+    <link rel="stylesheet" href="textarea.css">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h2>formulario</h2>
+        <!--label/input/name-->
+        <fieldset name="form_input">
+            <legend>datos basicos</legend>
+        <div>
+            <label>name
+                <input type="text" placeholder="...">
+            </label>
+        </div>
+        <!--label/input/gmail-->
+        <div>
+            <label class="label-casillas">email
+                <input type="email" placeholder="@gmail.com">
+            </label>
+        </div>
+        <div>
+                <label>asunto
+                    <input type="text" placeholder="¿porque nos escribis?">
+            </label>
+        </div>
+        </fieldset>
+        <!--label/select/option(value)-->
+        <div class="form_input">
+            <label class="label-option">sexo
+                <select name="type-of-user">
+                    <option value="user1">male</option>
+                    <option value="user2">female</option>
+                    <option value="user3">therian</option>
+                </select>
+            </label>
+        </div>
+        <!--datalist-->
+        <div class="form_input">
+            <label class="label-option">opciones
+                <input list="reference" name="reference">
+                <datalist id="reference" name="type-of-user">
+                    <option value="masculino">male</option>
+                    <option value="femenino">female</option>
+                    <option value="mal de la mente">therian</option>
+                </select>
+            </label>
+        </div>
+        <!--textarea-->
+        <div class="form_input">
+            <label>text area
+                <textarea rows="6" placeholder="escribe algo..."></textarea>
+            </label>
+        </div>
+        <!--label/checkbox-->
+        <div class="checkbox" >
+            <label>aceptar terminos y condiciones
+                <input type="checkbox" class="checkbox" required>
+            </label>
+        </div>
+        <div>
+            <input class="submit" type="submit">
+        </div>
+    </form>
+</body>
+</html>

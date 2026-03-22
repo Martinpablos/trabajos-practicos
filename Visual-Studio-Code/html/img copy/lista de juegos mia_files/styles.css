@@ -1,0 +1,85 @@
+body {
+    background-color: black;
+    color: white;
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    background-color: #454545;
+    font-size: 60px;
+    text-transform: uppercase;
+    color: lightsalmon;
+    width: 50vw;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 15px 4px #e70, 0 1px 10px #ee0;
+}
+
+a {
+    color: white;
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    position:relative;
+    box-shadow: #e70 0px 0.5px 15px 3px;
+    background-color: lightsalmon;
+}
+
+.container1{
+    background-color: #2e2e2e;
+    width: 50%;
+    height: 50vh;
+    margin: auto;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    border-radius:40px 40px 40px 40px ;
+}
+
+.godofwar {
+    width: 300px;
+    height: 300px;
+}
+
+.container2 {
+    background-color: #2e2e2e;
+    width: 50%;
+    height: 50vh;
+    font-size: 40px;
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-radius:40px 40px 40px 40px ;
+}
+
+.dbz {
+    width: 350px;
+    height: 300px;
+    align-items: center;
+}
+
+.container3 {
+    background-color: #2e2e2e;
+    width: 50%;
+    height: 50vh;
+    font-size: 40px;
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-radius:40px 40px 40px 40px ;
+} 
+.gta6 {
+    width: 400px;
+    height: 300px;
+    align-items: center;
+}
+
+h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-top: 40px;
+    text-shadow: 0 0.5px 15px #fff;
+    transition: all 0.4s;
+}

@@ -1,0 +1,56 @@
+body {
+    background: #333;
+    color: #bbb;
+    margin: 0;
+}
+
+.users {
+    box-shadow: 0px 0px 15px #6669;
+    text-align: center; 
+    flex-wrap:wrap;  
+    display: flex;
+    height: 100vh;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.video-grid {
+    flex-wrap: wrap;
+    display: flex;
+    flex: 3;
+    padding: 1%;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23%;
+    margin: 1%;
+    background: linear-gradient(#00e8,#f0a5);
+    border-radius: 5%;
+}
+
+.avatar {
+    box-shadow: 0px 0px 15px #eee4;
+    border-radius: 50%;
+    font-size: 25px;
+    padding: 10%;
+    margin: 10px;
+}
+
+.chat-panel {
+    background:linear-gradient(#03f9,#09f3);
+    flex: 1;
+    display: flex;
+    border-radius: 3px;
+    padding: 2%;
+    margin: 2%;
+    margin-left: 1%;
+}
+
+.chat {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}

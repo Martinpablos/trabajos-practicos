@@ -1,0 +1,56 @@
+body {
+    background: white;
+    font-family:'Times New Roman', Times, serif;
+    color: #2229;
+}
+
+.card {
+    background: #f88;
+    text-align: center;
+    width: 300px;
+    height: 320px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #0006;
+}
+
+.aquamarine-card {
+    background: #6dc;
+}
+
+.lightblue-card {
+    background: #0de9;
+}
+
+.card_title {
+    font-size: 22px;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 5px #0007;
+    color: #0009;
+}
+.card_subtitle {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin: 0;
+    margin-top: 5px;
+    text-decoration: overline;
+    color: #1119;
+}
+
+.card_content{
+    font-size: 10px;
+    margin: 0;
+    padding: 20px;
+
+}
+
+.card_img {
+    width: 130px;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 10px;
+    box-shadow: 0px 0px 30px #0008;
+}
+

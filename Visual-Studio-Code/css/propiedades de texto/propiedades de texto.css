@@ -1,0 +1,26 @@
+h1 {
+    color: black;
+    font-size: 34px;
+    font-family:"montserrat";
+    font-weight: 800;
+    text-align: center;
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+p {
+    color: grey;
+    font-family: "montserrat";
+    font-style: italic;
+    text-align: center;
+    font-weight: 600;
+}
+h3 {
+    color: orange;
+    text-align: center;
+}
+a {
+    color: orange;
+    font-family: "montserrat";
+    font-style: italic;
+    text-align: center;
+}

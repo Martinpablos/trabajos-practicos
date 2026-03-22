@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: sans-serif ;
+    background: #0009;
+}
+/*animaciones de fielset y legend*/
+.section__fieldset {
+    border: 1px solid #f5ea95;
+    background: #48e;
+    border-radius: 4px;
+    animation:change-color 1.5s linear infinite alternate, 
+    radius-box 5s infinite linear alternate;
+}
+
+@keyframes change-color {
+    0%{ background: blue;
+    }
+    100% {background: red;
+    }
+}
+@keyframes radius-box {
+    0% {margin-left: 100% ;
+        width: 300%;
+    }
+    100% {margin-left:0% ;
+        width: 100%;
+    }
+}
+
+
+.fieldset__legend {
+    color: white;
+    font-weight: 600;
+    text-transform:uppercase;
+    background: linear-gradient(to right,#f5ea95,#fc8e5b,#fc5956);
+    text-align: center;
+    border-radius: 3px;
+    padding:6px;
+}
+
+/*animaciones de section con transicion*/
+
+.section__list {
+    color: white ; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section__item {
+    display: inline-block;
+    padding: 20px 40px;
+}
+
+
+.section__item:hover {
+    background: #42e7;
+    transition: 0.3s ease;
+    transform: scale(1.1);
+    border-radius: 3px;
+}
+
+
+.nav {
+    background: #380590;
+}
+
+.nav__list {
+    margin: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    animation: move-box 4s infinite ;
+}
+@keyframes move-box {
+    0% {margin-right: 100% ;
+        width: 300%;
+    }
+    100% {margin-left:-100% ;
+        width: 100%;
+    }
+}
+
+.nav__item {
+    display: inline-block;
+    padding: 20px 40px;
+}
+.nav__item:hover {
+    background: #de3d08;
+    transition: 0.3s ease;
+    transform: scale(1.1);
+    border-radius: 3px;
+    box-shadow: 0 0 25PX #eb9961;
+}
+
+.nav__link {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+/*animaciones de texto p */
+
+.contain {
+    background: #fff;
+    padding: 40px;
+    margin-top: 50px;
+}
+
+.contain__text {
+    font-weight: 600;
+    animation: text-slide 3s linear infinite alternate
+}
+
+@keyframes text-slide {
+    0% {
+        position: relative;
+        top: -500px ;
+        bottom: 100px;
+    }
+    100% {
+        position: relative;
+        top: 0px;
+        bottom: 500px;
+    }
+}

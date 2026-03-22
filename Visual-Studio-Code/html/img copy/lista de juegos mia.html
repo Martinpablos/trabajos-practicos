@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://127.0.0.1:5500/medidas/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>lista de juegos</title>
+    <link rel="stylesheet" href="./lista de juegos mia_files/styles.css">
+</head>
+<body>
+    <h1>juegos y su descripcion</h1>
+        <div class="container1">
+            <h2>god of war ragnarok</h2>
+            <img src="./lista de juegos mia_files/Portada_God_of_War_Ragnarok.webp" class="godofwar">
+            <p>juego de accion y aventura, el dios de la guerra, masivo bro!</p>
+            <a href="https://godofwar.com/">saber mas sobre GOW</a>
+        </div>
+
+        <div class="container2">
+            <h2>dragon ball sparking zero</h2>
+            <img src="./lista de juegos mia_files/dbz.jpg" class="dbz">
+            <p>juego de lucha, sos goku hermano entendes? kame hame ha!</p>
+            <a href="https://dragonballsparkingzero.com/">saber mas sobre dbs</a>
+        </div>
+
+        <div class="container3">
+            <h2>grand thef auto VI</h2>
+            <img src="./lista de juegos mia_files/gta6.jpg" class="gta6">
+            <p>accion y aventura de mundo abierto, directo a las cariñosas!</p>
+            <a href="https://grandtheftautovi.com/">saber mas sobre gta6</a>
+        </div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
