@@ -53,6 +53,11 @@ body {
     font-size: 1em;
 }
 
+.header__list {
+    list-style: none;
+    display: flex;
+}
+
 .header__links {
     width: 100%;
     margin-top: 55px;
