@@ -40,13 +40,18 @@ body {
 .header__link {
     text-decoration: none;
     color: #222;
-    padding:0 18px 0 0;
+    padding:0 22px 0 0;
     font-size: 1em;
+}
+
+.header__list {
+    list-style: none;
+    display: flex;
 }
 
 .header__links {
     width: 100%;
-    margin-top:35px ;
+    margin-top:55px ;
 }
 
 .layout__header {
