@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ingresá tu DNI con el teclado:</h2>
+    
+    <input type="text" id="campoDni" placeholder="Ej: 12345678" maxlength="8">
+    
+    <button onclick="verificar()">Ver en Consola</button>
+    <button onclick="limpiarPantalla()">Borrar todo</button>
+
+    <script>
+        // Tu lógica de "Caja Fuerte" (un poco ajustada para el input)
+        function gestionDni() {
+            // Buscamos el elemento una sola vez para que sea eficiente
+            const inputElement = document.getElementById("campoDni");
+
+            return {
+                mostrar: function() {
+                    return inputElement.value; // Leemos lo que hay escrito
+                },
+                borrar: function() {
+                    inputElement.value = ""; // Vaciamos el cuadro de texto
+                    inputElement.focus();    // Volvemos a poner el cursor ahí
+                }
+            };
+        }
+
+        // Inicializamos nuestra "herramienta"
+        const miGestor = gestionDni();
+
+        function verificar() {
+            let actual = miGestor.mostrar();
+            if (actual.length >= 7) {
+                alert("DNI capturado: " + actual);
+            } 
+            else {
+                alert("El DNI debe tener 7 cifras minimo.");
+            }
+        }
+
+        function limpiarPantalla() {
+            miGestor.borrar(); // Usamos el método de tu función
+        }
+    </script>
+</body>
+</html>
