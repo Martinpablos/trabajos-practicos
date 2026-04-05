@@ -14,7 +14,7 @@ sumar();
 */
 
 function pantallaDeDocumento() {
-    
+
     let documento = '';
 
     function ingresarNumero (n) {
@@ -22,17 +22,16 @@ function pantallaDeDocumento() {
     }
 
     function mostrar() {
-        return ''
+        return documento;
     }
 
+    function borrar() {
+        documento = '';
+
     return {
-        mostrar
+        ingresarNumero,
+        mostrar,
+        borrar
     }
 
 }
-
-
-
-
-
-
