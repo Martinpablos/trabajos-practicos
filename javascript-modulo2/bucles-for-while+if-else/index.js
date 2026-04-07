@@ -1,3 +1,4 @@
+/**
 let numero1, numero2,numero3,numero4;
 
 numero1=4;
@@ -39,3 +40,50 @@ let nombre= prompt("decime tu nombre");
     alert("bienvenido "+nombre);
 
 }
+ */ 
+
+/**sentencia:continue 
+
+let i = 0;
+
+for ( let i= 0; i<=20; i++){
+    if (i === 12) {
+    continue; 
+    }
+    document.write(i+ "<br>");
+}
+
+*/
+
+/** array+continue 
+
+let palabras = ["programa","computadora","culo","comida","amor","computadora","culo","comida","amor","computadora","culo","comida","amor","computadora","culo","comida","amor"];
+
+for (let i = 0; i < palabras.length ; i++){
+    if (palabras [i]=== "culo"){
+        continue;
+    }
+    document.write (palabras [i] + "<br>");
+}
+
+*/
+
+let palabras1 = ["programa","computadora","culo","comida","amor","computadora"];
+let palabras2 = ["coca","fanta","sprite",palabras1,"manaos"];
+
+for (let palabra in palabras2){
+    if (palabra == 3){
+
+        for (let palabra of palabras1){
+
+            if (palabra === "culo"){
+            continue;
+        }
+        console.log (palabra);
+    }
+        } else {
+            console.log(palabras2[palabra]);
+        }
+    }  
+
+
