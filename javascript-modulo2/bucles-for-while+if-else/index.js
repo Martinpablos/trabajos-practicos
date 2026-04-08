@@ -68,22 +68,37 @@ for (let i = 0; i < palabras.length ; i++){
 
 */
 
-let palabras1 = ["programa","computadora","culo","comida","amor","computadora"];
-let palabras2 = ["coca","fanta","sprite",palabras1,"manaos"];
+// let palabras1 = ["programa","computadora","culo","comida","amor","computadora"];
+// let palabras2 = ["coca","fanta","sprite",palabras1,"manaos"];
 
-for (let palabra in palabras2){
-    if (palabra == 3){
+// for (let palabra in palabras2){
+//     if (palabra == 3){
 
-        for (let palabra of palabras1){
+//         for (let palabra of palabras1){
 
-            if (palabra === "culo"){
-            continue;
-        }
-        console.log (palabra);
-    }
-        } else {
-            console.log(palabras2[palabra]);
-        }
-    }  
+//             if (palabra === "culo"){
+//             continue;
+//         }
+//         console.log (palabra);
+//     }
+//         } else {
+//             console.log(palabras2[palabra]);
+//         }
+//     }  
 
 
+// let frase = "bienvenido a mi pagina web ${nombre}";
+
+// function saludar(nombre) {
+//     console.log(frase.replace("${nombre}", nombre));
+// }
+
+// saludar("martin");
+
+let pollo = 20;
+
+function calcularPropina (precio) { 
+    let propina = precio + (precio/10);
+    console.log("el precio del plato es: " + propina);
+} 
+calcularPropina (pollo);
