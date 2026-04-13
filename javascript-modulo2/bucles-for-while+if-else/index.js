@@ -95,10 +95,33 @@ for (let i = 0; i < palabras.length ; i++){
 
 // saludar("martin");
 
-let pollo = 20;
+// let pollo = 20;
 
-function calcularPropina (precio) { 
-    let propina = precio + (precio/10);
-    console.log("el precio del plato es: " + propina);
-} 
-calcularPropina (pollo);
+// function calcularPropina (precio) { 
+//     let propina = precio + (precio/10);
+//     console.log("el precio del plato es: " + propina);
+// } 
+// calcularPropina (pollo);
+    
+
+class Entrenamiento {
+    constructor (ejercicio,series,repeticiones){
+        this.ejercicio =ejercicio;
+        this.series =series;
+        this.repeticiones =repeticiones;
+    }
+    obtenerTexto(){
+        return (`hoy es dia de ${this.ejercicio} van a ser  ${this.series} series de ${this.repeticiones} con descanso de 1 minuto entre series`);
+    }
+}
+
+let entrenamiento1 = new Entrenamiento ("piernas", 3, 10);
+let entrenamiento2 = new Entrenamiento ("pecho", 4, 10);
+let entrenamiento3 = new Entrenamiento ("espalda", 4, 10);
+let entrenamiento4 = new Entrenamiento ("brazos", 3, 10);
+
+console.log(entrenamiento1.obtenerTexto());
+console.log(entrenamiento2.obtenerTexto());
+console.log(entrenamiento3.obtenerTexto());
+console.log(entrenamiento4.obtenerTexto());
+
