@@ -146,6 +146,16 @@ body {
     transition: 250ms;
 }
 
+.btn-agregar {
+    border: none;
+    background: transparent;
+}
+
+.btn-agregar:hover {
+    transform: scale(1.2);
+    transition: 250ms;
+}
+
 .btn-quitar{
     border: none;
     background: #cdb9;

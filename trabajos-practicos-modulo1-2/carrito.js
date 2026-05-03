@@ -18,24 +18,22 @@ const receta4 = new receta (4,"pavlova", "dulce y tentadora", "merengue frances,
 //
 
 const carrito = (subTotal) =>{
-    const envio="envio "+3000;
-    const descuento=0;
-    const total=subTotal+envio-descuento;
+    let envio="envio "+3000;
+    let descuento=0;
+    let total=0;
 
-
-    if(subTotal >= 10000){
-        descuento=subTotal*0.07;
-        envio='coste del envio: 1500$ , descuento del 50% aplicado';
+    if (subTotal >=20000){
+        descuento=subTotal*0.20;
+        envio='¡Envio gratis!';
     }
-
     else if  (subTotal >=15000){
         descuento=subTotal*0.15;
         envio='coste del envio: 750$ , descuento del 75% aplicado';
     }
 
-    else if (subTotal >=20000){
-        descuento=subTotal*0.20;
-        envio='¡Envio gratis!';
+    else if(subTotal >= 10000){
+        descuento=subTotal*0.07;
+        envio='coste del envio: 1500$ , descuento del 50% aplicado';
     }
 
     total=subTotal-descuento;
