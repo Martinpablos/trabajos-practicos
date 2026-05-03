@@ -40,7 +40,7 @@ const recetaFavorita = (id)=>{
     console.log(`tus recetas favoritas son: `,[...favoritas])
 
     renderFavoritas(favoritas);
-}
+};
 
 //no se debe duplicar lo guardado en favoritos
 //se debe poder eliminar una receta de favoritos
@@ -50,18 +50,17 @@ const recetaFavorita = (id)=>{
 
 const contenedorFavoritas = document.getElementById("lista-favoritas");
 
-const renderFavoritas = (favoritas)=>{
+const renderFavoritas = (listaDeFavs)=>{
     contenedorFavoritas.innerHTML = "";
 
-const arrayFavoritas = [...setFavoritas];
+const arrayFavs = [...listaDeFavs];
 
 arrayFavs.forEach(receta => {
         contenedorFavoritas.innerHTML += `
-            <div class="card-favorita">
-                <img src="${receta.imagen}" alt="${receta.nombre}">
+            <div class="card-favorita" style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
                 <h4>${receta.nombre}</h4>
-                <!-- Botón para quitar, usa la misma lógica de ID -->
-                <button onclick="recetaFavorita(${receta.id})" class="btn-quitar">Quitar</button>
+                <p>${receta.descripcion}</p>
+                <button onclick="recetaFavorita(${receta.id})" class="btn-quitar">Eliminar</button>
             </div>
         `;
     });

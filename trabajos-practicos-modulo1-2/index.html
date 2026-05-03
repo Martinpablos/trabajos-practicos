@@ -100,7 +100,8 @@
                             </span>-arrolado de merengue,suave y liviano, idea para cada momento.</p>
                             <a href="vermasrecetas-enlace-interno/index.html"  target="_blank" class="card__btn">ver receta</a>
                             <button onclick="recetaFavorita(1)" 
-                            id="fav-1" class="btn-fav"><i class="bi bi-heart-fill"></i></button>
+                            id="fav-1"
+                            data-id="1" class="btn-fav">❤️</button>
                         </div>
                     </div>
                 </div>
@@ -112,6 +113,9 @@
                         <div class="card-body text-center">
                             <p class="card__text"><span>rogel</span>-mucho dulce de leche y mucho merengue para cucharear.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(2)" 
+                            id="fav-2"
+                            data-id="2" class="btn-fav">❤️</button>
                         </div>
                     </div>
                 </div>
@@ -123,6 +127,9 @@
                         <div class="card-body text-center">
                             <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate y mani amargo.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(3)" 
+                            id="fav-3"
+                            data-id="3" class="btn-fav">❤️</button>
                         </div>
                     </div>
                 </div>
@@ -134,6 +141,9 @@
                         <div class="card-body text-center">
                             <p class="card__text"><span>pavlova</span>-merengue frances,dulce de leche,crema batida,frutos rojos.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(4)" 
+                            id="fav-4"
+                            data-id="4" class="btn-fav">❤️</button>
                         </div>
                     </div>
                 </div>
@@ -208,9 +218,10 @@
                     <img src="imagenes-celi/receta-6.jpeg" class="card  carousel__card">
                 </div>
             </div>
-            <div id="lista-favoritas">
-
-            </div>
+                <div class="text-center">
+                    <h2 class="layout__entrepaginas">favoritas</h2>
+                    <div id="lista-favoritas"></div>
+                </div>
             <div class="container d-flex align-items-center justify-content-between py-3">
                 <div class="d-flex justify-content-center">
                     <p class="footer__text pe-3">encontranos</p>
