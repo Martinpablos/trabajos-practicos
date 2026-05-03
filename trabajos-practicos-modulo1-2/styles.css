@@ -145,6 +145,38 @@ body {
     transition: 250ms;
 }
 
+.btn-quitar{
+    border: none;
+    background: #cdb9;
+    border-radius: 4px;
+    color: #777;
+}
+
+.btn-quitar:hover {
+    color: #222;
+    transition: 250ms;
+}
+
+#lista-favoritas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-favorita {
+    width: 250px;
+    background-color:  #fcf7f2;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card-favorita:hover {
+    transform: scale(1.05);
+}
+
 
 /*hoster-main*/
 

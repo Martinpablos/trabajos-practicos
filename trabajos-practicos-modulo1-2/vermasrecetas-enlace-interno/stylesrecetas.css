@@ -64,6 +64,16 @@ body {
     width: 100%;
     margin-top: 18px;
 }
+.btn-fav {
+    border: none;
+    background: transparent;
+    color: #d096;
+}
+
+.btn-fav:hover {
+    transform: scale(1.2);
+    transition: 250ms;
+}
 
 
 /*carousel*/
