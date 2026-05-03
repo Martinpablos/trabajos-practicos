@@ -55,26 +55,30 @@
             </div>
         </header>
     </section>
-    
+
     <div class="container layout__container"></div>
     </div>
 
-    <div class="container layout__container">
+    <div class="container layout__container" id="lista-compra-items">
         <div class="row">
-            <div class="resumen-compra ">
-                <h3>Resumen de compra</h3>
-                <hr>
-                <p>Productos (<span id="cant-prod">0</span>): <span id="subtotal-display">$0</span></p>
-                <p>Descuentos: <span id="descuento-display">-$0</span></p>
-                <p id="envio-display">Envío: $1500</p>
-                <hr>
-                <h4>Total: <span id="total-final-display">$0</span></h4>
-                <button class="btn-comprar">Continuar compra</button>
+            <div class="col-8">
+                <div id="lista-items-dinamicos">
+                    <!-- Aquí se dibujarán los productos uno por uno -->
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="resumen-compra">
+                    <h3>Resumen de compra</h3>
+                    <p>Productos (<span id="cant-prod">0</span>): <span id="subtotal-display">$0</span></p>
+                    <p>Descuentos: <span id="descuento-display">-$0</span></p>
+                    <p id="envio-display">Envío: $3000</p>
+                    <hr>
+                    <h4>Total: <span id="total-final-display">$0</span></h4>
+                </div>
             </div>
         </div>
     </div>
-    
-    
+        
 
     <footer class="container border-top border-3 border-black px-4 layout__container">
 

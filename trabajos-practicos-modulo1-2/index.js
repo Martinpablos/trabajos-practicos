@@ -68,7 +68,7 @@ arrayFavs.forEach(receta => {
 //funcion para mostrar el carrito de compras.
 
 //array de carrito.
-const productosCarrito = [];
+const productosCarrito = JSON.parse(localStorage.getItem("carritoCelicitas")) || [];
 
 const agregarAlCarrito = (id) => {
     const producto = recetas.find(receta => receta.id === id);

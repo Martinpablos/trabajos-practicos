@@ -1,60 +1,58 @@
 //moldes para las recetas, aplico herencia al igual que en la lista de favoritas, pero esta vez con los precios, para poder darles el uso en la calculadora de precios del carrito de compras.
 
-    class receta {
-        constructor(id,nombre,descripcion,contiene,precio){
-            this.id=id;
-            this.nombre=nombre;
-            this.descripcion=descripcion;
-            this.contiene=contiene;
-            this.precio=precio;
-        }
+// ... (Clase receta y constantes de recetas igual)
+
+const calcularCarrito = (subTotal) => { // Cambiado nombre aquí
+    let envio = "Envío: $3000";
+    let descuento = 0;
+    
+    if (subTotal >= 20000) {
+        descuento = subTotal * 0.20;
+        envio = '¡Envío gratis!';
+    } else if (subTotal >= 15000) {
+        descuento = subTotal * 0.15;
+        envio = 'Coste del envío: $750 (75% OFF)';
+    } else if (subTotal >= 10000) {
+        descuento = subTotal * 0.07;
+        envio = 'Coste del envío: $1500 (50% OFF)';
     }
-
-const receta1 = new receta (1,"roulade-arrolado","suave y liviano","quesocrema,frutos rojos, frutas frescas, hojas de menta",5600); 
-const receta2 = new receta (2,"rogel","dulce y crocante", "dulce de leche, merengue, batido de crema",6200);
-const receta3 = new receta (3,"panetton","esponjoso y dulce", "chocolate, mani amargo, baño de crema batida",4500);
-const receta4 = new receta (4,"pavlova", "dulce y tentadora", "merengue frances, dulce de leche, crema batida, frutos rojos",7800);
-
-//
-
-const carrito = (subTotal) =>{
-    let envio="envio "+3000;
-    let descuento=0;
-    let total=0;
-
-    if (subTotal >=20000){
-        descuento=subTotal*0.20;
-        envio='¡Envio gratis!';
-    }
-    else if  (subTotal >=15000){
-        descuento=subTotal*0.15;
-        envio='coste del envio: 750$ , descuento del 75% aplicado';
-    }
-
-    else if(subTotal >= 10000){
-        descuento=subTotal*0.07;
-        envio='coste del envio: 1500$ , descuento del 50% aplicado';
-    }
-
-    total=subTotal-descuento;
 
     return {
         envio: envio,
         descuento: descuento,
-        total: total
+        total: subTotal - descuento
     };
 };
 
-//array para carrito de compras, se guardan las recetas seleccionadas por el usuario, con su precio, para luego ser sumados y aplicados a la calculadora de precios del carrito.
+const mostrarCarrito = () => {
+    const contenedorItems = document.getElementById("lista-items-dinamicos"); // ID nuevo para no borrar el resumen
+    const datosGuardados = JSON.parse(localStorage.getItem("carritoCelicitas")) || [];
 
-const carritoGuardado = JSON.parse(localStorage.getItem("carritoCelicitas")) || [];
+    if (datosGuardados.length === 0) {
+        if(contenedorItems) contenedorItems.innerHTML = "<p>Tu carrito está vacío 🍰</p>";
+        return;
+    }
 
-// funcion para sumar el precio de las recetas
+    let acumuladorSubtotal = 0;
+    contenedorItems.innerHTML = "";
 
-const subTotal = carritoGuardado.reduce((acc, receta) => acc + receta.precio, 0);
+    datosGuardados.forEach(item => {
+        acumuladorSubtotal += item.precio;
+        contenedorItems.innerHTML += `
+            <div class="item-carrito-lista">
+                <p><strong>${item.nombre}</strong> - $${item.precio}</p>
+            </div>
+        `;
+    });
 
-//resultados
+    const beneficios = calcularCarrito(acumuladorSubtotal);
 
-const resultado = calcularCarrito(subTotal);
+    // Actualizamos los campos del Resumen de Compra
+    document.getElementById("cant-prod").innerText = datosGuardados.length;
+    document.getElementById("subtotal-display").innerText = `$${acumuladorSubtotal}`;
+    document.getElementById("descuento-display").innerText = `-$${beneficios.descuento}`;
+    document.getElementById("envio-display").innerText = beneficios.envio;
+    document.getElementById("total-final-display").innerText = `$${beneficios.total}`;
+};
 
-console.log(`Total: ${resultado.total}`);
+window.onload = mostrarCarrito;
