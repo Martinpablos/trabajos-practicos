@@ -134,6 +134,17 @@ body {
     border: none;
 }
 
+.btn-fav {
+    border: none;
+    background: transparent;
+    color: #d096;
+}
+
+.btn-fav:hover {
+    transform: scale(1.2);
+    transition: 250ms;
+}
+
 
 /*hoster-main*/
 

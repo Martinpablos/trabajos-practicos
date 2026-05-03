@@ -38,11 +38,42 @@ const recetaFavorita = (id)=>{
         favoritas.add(recetaElegida)
     }
     console.log(`tus recetas favoritas son: `,[...favoritas])
+
+    renderFavoritas(favoritas);
 }
 
 //no se debe duplicar lo guardado en favoritos
 //se debe poder eliminar una receta de favoritos
 //se debe mostrar el resultado total de recetas favoritas guardadas por el usuario
 
+//funcion para mostrar las recetas guardadas como favoritaspor el usuario, con el array muestro su nombre y descripcion.
 
+const contenedorFavoritas = document.getElementById("lista-favoritas");
+
+const renderFavoritas = (favoritas)=>{
+    contenedorFavoritas.innerHTML = "";
+
+const arrayFavoritas = [...setFavoritas];
+
+arrayFavs.forEach(receta => {
+        contenedorFavoritas.innerHTML += `
+            <div class="card-favorita">
+                <img src="${receta.imagen}" alt="${receta.nombre}">
+                <h4>${receta.nombre}</h4>
+                <!-- Botón para quitar, usa la misma lógica de ID -->
+                <button onclick="recetaFavorita(${receta.id})" class="btn-quitar">Quitar</button>
+            </div>
+        `;
+    });
+};
+
+//busco los botones de favoritos, recorro uno por uno y los llamo, asigno un boton y tomo su id, para luego llamar a la funcion con el id de la receta y se guarde.
+
+const botonesFav = document.querySelectorAll(".btn-fav");
+botonesFav.forEach(boton => {
+    boton.addEventListener("click", (e) => {
+        const idReceta = parseInt(e.target.dataset.id);
+        recetaFavorita(idReceta);
+    });
+});
 
