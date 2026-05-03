@@ -121,6 +121,7 @@ body {
 }
 
 .resumen-compra {
-    background: #cdb2;
+    background: #fcf7f2;
     padding: 30px 20px;
+    border-radius: 10px;
 }
