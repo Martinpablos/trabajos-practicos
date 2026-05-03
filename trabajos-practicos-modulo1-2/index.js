@@ -24,7 +24,7 @@ const recetas = [receta1, receta2 , receta3, receta4];
 
 // //funcion para que guarde las recetas marcadas como favoritas de parte del usuario, la funcion busca la receta segun lo que elige el usuario, en el array maestro, para poder guardarlas en el array favortias, utilizando el ID de cada receta seleccionada por el usuario.
 
-const favoritas = new Set ();
+const favoritas = new Set();
 
 const recetaFavorita = (id)=>{
     const recetaElegida = recetas.find((receta)=>receta.id===id);
@@ -39,6 +39,8 @@ const recetaFavorita = (id)=>{
         favoritas.add(recetaElegida)
     }
     console.log(`tus recetas favoritas son: `,[...favoritas])
+
+    localStorage.setItem("recetasFavoritas", JSON.stringify([...favoritas]));
 
     renderFavoritas(favoritas);
 };
