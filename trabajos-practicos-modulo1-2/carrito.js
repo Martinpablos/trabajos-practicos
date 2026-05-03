@@ -1,7 +1,7 @@
 //moldes para las recetas, aplico herencia al igual que en la lista de favoritas, pero esta vez con los precios, para poder darles el uso en la calculadora de precios del carrito de compras.
 
     class receta {
-        constructor(id,nombre,descripcion,contiene){
+        constructor(id,nombre,descripcion,contiene,precio){
             this.id=id;
             this.nombre=nombre;
             this.descripcion=descripcion;
