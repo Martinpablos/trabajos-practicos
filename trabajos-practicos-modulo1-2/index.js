@@ -68,11 +68,11 @@ arrayFavs.forEach(receta => {
 
 //busco los botones de favoritos, recorro uno por uno y los llamo, asigno un boton y tomo su id, para luego llamar a la funcion con el id de la receta y se guarde.
 
-const botonesFav = document.querySelectorAll(".btn-fav");
-botonesFav.forEach(boton => {
-    boton.addEventListener("click", (e) => {
-        const idReceta = parseInt(e.target.dataset.id);
-        recetaFavorita(idReceta);
-    });
-});
+// const botonesFav = document.querySelectorAll(".btn-fav");
+// botonesFav.forEach(boton => {
+//     boton.addEventListener("click", (e) => {
+//         const idReceta = parseInt(e.target.dataset.id);
+//         recetaFavorita(idReceta);
+//     });
+// });
 
