@@ -44,3 +44,17 @@ const carrito = (subTotal) =>{
         total: total
     };
 };
+
+//array para carrito de compras, se guardan las recetas seleccionadas por el usuario, con su precio, para luego ser sumados y aplicados a la calculadora de precios del carrito.
+
+const carritoGuardado = JSON.parse(localStorage.getItem("carritoCelicitas")) || [];
+
+// funcion para sumar el precio de las recetas
+
+const subTotal = carritoGuardado.reduce((acc, receta) => acc + receta.precio, 0);
+
+//resultados
+
+const resultado = calcularCarrito(subTotal);
+
+console.log(`Total: ${resultado.total}`);
