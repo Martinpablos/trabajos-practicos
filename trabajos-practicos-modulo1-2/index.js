@@ -65,4 +65,16 @@ arrayFavs.forEach(receta => {
     });
 };
 
+//funcion para mostrar el carrito de compras.
 
+//array de carrito.
+const productosCarrito = [];
+
+const agregarAlCarrito = (id) => {
+    const producto = recetas.find(receta => receta.id === id);
+    productosCarrito.push(producto);
+    
+    localStorage.setItem("carritoCelicitas", JSON.stringify(productosCarrito));
+    
+    alert(`${producto.nombre} agregado al carrito`);
+};
