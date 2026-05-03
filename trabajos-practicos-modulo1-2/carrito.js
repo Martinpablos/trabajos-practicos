@@ -20,6 +20,13 @@ const calcularCarrito = (subTotal) => {
     };
 };
 
+const botonVaciar = document.getElementById("vaciar-carrito");
+if (botonVaciar) {
+    botonVaciar.addEventListener("click", () => {
+        localStorage.removeItem("carritoCelicitas"); //borro
+        location.reload(); //recargo vacio
+    });
+}
 
 
 const mostrarCarrito = () => {
@@ -35,7 +42,7 @@ const mostrarCarrito = () => {
     if (!contenedorItems) return;
 
     if (datosGuardados.length === 0) {
-        contenedorItems.innerHTML = "<p>Tu carrito está vacío. ¡Tentate con algo! 🍰</p>";
+        contenedorItems.innerHTML = "<p>¡Tentate con algo! Agrega al carrito.</p>";
         // Limpia los números si está vacío
         if(cantProd) cantProd.innerText = "0";
         if(subtotalDisplay) subtotalDisplay.innerText = "$0";
