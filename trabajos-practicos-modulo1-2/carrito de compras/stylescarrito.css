@@ -119,3 +119,8 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+.resumen-compra {
+    background: #cdb2;
+    padding: 30px 20px;
+}
