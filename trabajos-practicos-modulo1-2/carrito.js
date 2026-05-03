@@ -1,8 +1,4 @@
-//moldes para las recetas, aplico herencia al igual que en la lista de favoritas, pero esta vez con los precios, para poder darles el uso en la calculadora de precios del carrito de compras.
-
-// ... (Clase receta y constantes de recetas igual)
-
-const calcularCarrito = (subTotal) => { // Cambiado nombre aquí
+const calcularCarrito = (subTotal) => { 
     let envio = "Envío: $3000";
     let descuento = 0;
     
@@ -24,12 +20,26 @@ const calcularCarrito = (subTotal) => { // Cambiado nombre aquí
     };
 };
 
+
+
 const mostrarCarrito = () => {
-    const contenedorItems = document.getElementById("lista-items-dinamicos"); // ID nuevo para no borrar el resumen
+    const contenedorItems = document.getElementById("lista-items-dinamicos");
+    const cantProd = document.getElementById("cant-prod");
+    const subtotalDisplay = document.getElementById("subtotal-display");
+    const descuentoDisplay = document.getElementById("descuento-display");
+    const envioDisplay = document.getElementById("envio-display");
+    const totalDisplay = document.getElementById("total-final-display");
+
     const datosGuardados = JSON.parse(localStorage.getItem("carritoCelicitas")) || [];
 
+    if (!contenedorItems) return;
+
     if (datosGuardados.length === 0) {
-        if(contenedorItems) contenedorItems.innerHTML = "<p>Tu carrito está vacío 🍰</p>";
+        contenedorItems.innerHTML = "<p>Tu carrito está vacío. ¡Tentate con algo! 🍰</p>";
+        // Limpia los números si está vacío
+        if(cantProd) cantProd.innerText = "0";
+        if(subtotalDisplay) subtotalDisplay.innerText = "$0";
+        if(totalDisplay) totalDisplay.innerText = "$0";
         return;
     }
 
@@ -39,20 +49,20 @@ const mostrarCarrito = () => {
     datosGuardados.forEach(item => {
         acumuladorSubtotal += item.precio;
         contenedorItems.innerHTML += `
-            <div class="item-carrito-lista">
-                <p><strong>${item.nombre}</strong> - $${item.precio}</p>
+            <div class="item-carrito-lista" style="border-bottom: 1px solid #eee; padding: 10px 0; display: flex; justify-content: space-between;">
+                <span><strong>${item.nombre}</strong></span>
+                <span>$${item.precio}</span>
             </div>
         `;
     });
 
     const beneficios = calcularCarrito(acumuladorSubtotal);
 
-    // Actualizamos los campos del Resumen de Compra
-    document.getElementById("cant-prod").innerText = datosGuardados.length;
-    document.getElementById("subtotal-display").innerText = `$${acumuladorSubtotal}`;
-    document.getElementById("descuento-display").innerText = `-$${beneficios.descuento}`;
-    document.getElementById("envio-display").innerText = beneficios.envio;
-    document.getElementById("total-final-display").innerText = `$${beneficios.total}`;
+    if(cantProd) cantProd.innerText = datosGuardados.length;
+    if(subtotalDisplay) subtotalDisplay.innerText = `$${acumuladorSubtotal}`;
+    if(descuentoDisplay) descuentoDisplay.innerText = `-$${beneficios.descuento.toFixed(0)}`;
+    if(envioDisplay) envioDisplay.innerText = beneficios.envio;
+    if(totalDisplay) totalDisplay.innerText = `$${beneficios.total.toFixed(0)}`;
 };
 
-window.onload = mostrarCarrito;
+document.addEventListener("DOMContentLoaded", mostrarCarrito);
