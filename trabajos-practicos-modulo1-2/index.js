@@ -48,9 +48,8 @@ const recetaFavorita = (id)=>{
 
 //funcion para mostrar las recetas guardadas como favoritaspor el usuario, con el array muestro su nombre y descripcion.
 
-const contenedorFavoritas = document.getElementById("lista-favoritas");
-
 const renderFavoritas = (listaDeFavs)=>{
+    const contenedorFavoritas = document.getElementById("lista-favoritas");
     contenedorFavoritas.innerHTML = "";
 
 const arrayFavs = [...listaDeFavs];
@@ -66,13 +65,4 @@ arrayFavs.forEach(receta => {
     });
 };
 
-//busco los botones de favoritos, recorro uno por uno y los llamo, asigno un boton y tomo su id, para luego llamar a la funcion con el id de la receta y se guarde.
-
-// const botonesFav = document.querySelectorAll(".btn-fav");
-// botonesFav.forEach(boton => {
-//     boton.addEventListener("click", (e) => {
-//         const idReceta = parseInt(e.target.dataset.id);
-//         recetaFavorita(idReceta);
-//     });
-// });
 
