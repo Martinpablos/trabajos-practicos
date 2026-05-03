@@ -28,15 +28,17 @@ const carrito = (subTotal) =>{
         envio='coste del envio: 1500$ , descuento del 50% aplicado';
     }
 
-    if else (subTotal >=15000){
-        descuento=subtotal*0.15;
+    else if  (subTotal >=15000){
+        descuento=subTotal*0.15;
         envio='coste del envio: 750$ , descuento del 75% aplicado';
     }
 
-    if else (subTotal >=20000){
+    else if (subTotal >=20000){
         descuento=subTotal*0.20;
         envio='¡Envio gratis!';
     }
+
+    total=subTotal-descuento;
 
     return {
         envio: envio,
