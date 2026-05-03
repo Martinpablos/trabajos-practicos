@@ -25,6 +25,7 @@ body {
     text-decoration: none;
     color: #222;
     font-size: 22px;
+    margin: 0 10px;
 }
 
 .nav__search {

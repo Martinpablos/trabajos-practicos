@@ -20,6 +20,7 @@ body {
     display: flex;
     align-items: center;
     font-size: 22px;
+    margin: 0 10px;
 }
 
 .nav__search {
