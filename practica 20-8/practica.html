@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>retomando basico-h-c-j</title>
+    <meta name="description" content="contador de likes de recetas, para practicar codigo, funciones y eventos basicos">
+    <meta name="keywords" content="recetas, recetas favoritas, likes, contador de likes, contador">
+    <meta name="author" content="Martin Ezequiel Pablos">
     <link rel="stylesheet" href="styles.css"> 
+    <title>retomando basico-html-css-javascript</title>
 </head>
 <body>
     <div class="lista">
@@ -12,27 +15,37 @@
         <p id="contador">0</p>
         <section id="recetas-mg">
             <div class="opcion-1">
-                <p class="nombre">Receta 1<button onclick="recetaFavorita(1)" 
+                <p class="nombre">Receta 1</p>
+                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-fondo-form.jpeg" alt="receta 1" class="imagen">
+                <button onclick="recetaFavorita(1)" 
                 id="fav-1"
-                data-id="1" class="btn-fav">❤️</button></p>
+                data-id="1" class="btn-fav">❤️</button>
             </div>
             <div class="opcion-2">
-                <p class="nombre">Receta 2<button onclick="recetaFavorita(2)" 
+                <p class="nombre">Receta 2</p>
+                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-fondo-form.jpeg" alt="receta 2" class="imagen">
+                <button onclick="recetaFavorita(2)" 
                 id="fav-2"
-                data-id="2" class="btn-fav">❤️</button></p>
+                data-id="2" class="btn-fav">❤️</button>
             </div> 
             <div class="opcion-3">
-                <p class="nombre">Receta 3<button onclick="recetaFavorita(3)" 
+                <p class="nombre">Receta 3</p>
+                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-fondo-form.jpeg" alt="receta 3" class="imagen">
+                <button onclick="recetaFavorita(3)" 
                 id="fav-3"
-                data-id="3" class="btn-fav">❤️</button></p>
+                data-id="3" class="btn-fav">❤️</button>
             </div> 
             <div class="opcion-4">
-                <p class="nombre">Receta 4<button onclick="recetaFavorita(4)" 
+                <p class="nombre">Receta 4</p>
+                <div class="imagen-container">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-fondo-form.jpeg" alt="receta 4" class="imagen">
+                    <button onclick="recetaFavorita(4)" 
                 id="fav-4"
-                data-id="4" class="btn-fav">❤️</button></p>
+                data-id="4" class="btn-fav">❤️</button>
+                </div>
             </div>
-        </section>     
+        </section>
     </div>
-    <javascript src="script.js"></javascript>
+    <script src="script.js"></script>
 </body>
 </html>
