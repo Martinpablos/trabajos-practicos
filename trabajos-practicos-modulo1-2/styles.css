@@ -23,11 +23,42 @@ body {
     z-index: 40;
 }
 
-.nav__link {
+.nav__link, .nav__link__carrito{
     text-decoration: none;
     color: #222;
     font-size: 22px;
     margin: 0 10px;
+}
+
+.nav__link__carrito{
+    display: block;
+    margin: auto;
+    margin-left: 4px ;
+}
+.btn__carrito{
+    background-color: #fff7;
+    display: block;
+    position: absolute;
+    position: fixed;
+    border-radius: 100px;
+    padding: 10px;
+    bottom: 80px;
+    right: 50px;
+    width: 50px;
+}
+
+.btn__carrito:hover {
+    background-color: #fff9;
+    border-radius: 100px;
+    padding: 10px;
+    width: 50px;
+}
+
+.btn__carrito:active {
+    background-color: #ddd;
+    border-radius: 100px;
+    padding: 10px;
+    width: 50px;
 }
 
 .nav__search {
@@ -53,8 +84,12 @@ body {
     text-decoration: none;
     color: #222;
     padding:0 22px 0 0;
-    font-size: 1em;
+    font-size: 0.8em;
     margin-top: 40px;
+    display: block;
+}
+.header__link:hover {
+    color: #888;
 }
 
 .header__list {
@@ -213,7 +248,6 @@ body {
 .hoster__card {
     margin: 0 auto;
     background: #fcf7f2 ;
-    max-width: 1080px;
     width: 100%;
     border: none;
     box-shadow: 1px 0 5px #777;
@@ -262,8 +296,8 @@ body {
 /*carousel*/
 
 .carousel {
-    margin: 40px auto;
     display: flex;
+    margin: auto;
     overflow-x: auto;
     background: #fda6;
     box-shadow: 0 0 10px #2226;
