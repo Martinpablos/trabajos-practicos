@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="web de comercio,comidas,recetas para celiacos, sin tacc, gluten free, sin gluten, recetas faciles y rapidas, recetas dulces y saladas, recetas de comercio">
-    <meta name="keywords" content="recetas, celiacos, sin tacc, gluten free, sin gluten, recetas faciles, comida">
+    <meta name="keywords" content="recetas, celiacos, sin tacc, gluten free, sin gluten, recetas faciles, comida, envio de comida">
     <meta name="author" content="Martin Ezequiel Pablos">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -13,14 +13,15 @@
 </head>
 <body>
 <!--nav-->
-    <div class="layout__nav">
+<layout class="layout__container">
+    <div class="layout__nav layout">
         <section class="container-fluid">
             <div class="row">
                 <nav class="navbar col layout__navbar">
-                    <div class="container layout__container">
+                    <div class="container">
                         <div class="input__group">
                             <i class="bi bi-search"></i>
-                            <input type="search" class="nav__search" placeholder="cual es tu antojo hoy?" title="escribe algo">
+                            <input type="search" class="nav__search" placeholder="cual es tu antojo hoy?" title="escribe algo" maxlength="40">
                         </div>
                         <form class="d-flex">
                             <a href="#" title="sign up" class="nav__link"><i class="bi bi-person "></i></a>
@@ -92,12 +93,12 @@
 
 <!--main-card-->
 
-                <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
                     <div class="card main__card">
                         <div class="overflow-hidden position-relative">
-                            <img src="imagenes-celi/recetas-1.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body text-center main__card__content">
                             <p class="card__text"><span>roulade
                             </span>-arrolado de merengue,suave y liviano, idea para cada momento.</p>
                             <a href="vermasrecetas-enlace-interno/index.html"  target="_blank" class="card__btn">ver receta</a>
@@ -108,12 +109,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
                     <div class="card main__card">
                         <div class="overflow-hidden position-relative">
-                            <img src="imagenes-celi/receta-6.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body text-center main__card__content">
                             <p class="card__text"><span>rogel</span>-mucho dulce de leche y mucho merengue para cucharear.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
                             <button onclick="recetaFavorita(2)" 
@@ -123,12 +124,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
                     <div class="card main__card">
                         <div class="overflow-hidden position-relative">
-                            <img src="imagenes-celi/receta-2.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body text-center main__card__content">
                             <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate y mani amargo.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
                             <button onclick="recetaFavorita(3)" 
@@ -138,12 +139,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
                     <div class="card main__card">
                         <div class="overflow-hidden position-relative">
-                            <img src="imagenes-celi/receta-3.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
                         </div>
-                        <div class="card-body text-center">
+                        <div class="card-body text-center main__card__content">
                             <p class="card__text"><span>pavlova</span>-merengue frances,dulce de leche,crema batida,frutos rojos.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
                             <button onclick="recetaFavorita(4)" 
@@ -153,47 +154,169 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>roulade
+                            </span>-arrolado de merengue,suave y liviano, idea para cada momento.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html"  target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(1)" 
+                            id="fav-1"
+                            data-id="1" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(1)" data-id="1" class="btn-agregar" title="$5600">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>rogel</span>-mucho dulce de leche y mucho merengue para cucharear.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(2)" 
+                            id="fav-2"
+                            data-id="2" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(2)" data-id="2" class="btn-agregar" title="$6200">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate y mani amargo.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(3)" 
+                            id="fav-3"
+                            data-id="3" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(3)" data-id="3" class="btn-agregar" title="$4500">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>pavlova</span>-merengue frances,dulce de leche,crema batida,frutos rojos.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(4)" 
+                            id="fav-4"
+                            data-id="4" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(4)" data-id="4" class="btn-agregar" title="$7800">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>roulade
+                            </span>-arrolado de merengue,suave y liviano, idea para cada momento.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html"  target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(1)" 
+                            id="fav-1"
+                            data-id="1" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(1)" data-id="1" class="btn-agregar" title="$5600">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>rogel</span>-mucho dulce de leche y mucho merengue para cucharear.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(2)" 
+                            id="fav-2"
+                            data-id="2" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(2)" data-id="2" class="btn-agregar" title="$6200">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate y mani amargo.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(3)" 
+                            id="fav-3"
+                            data-id="3" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(3)" data-id="3" class="btn-agregar" title="$4500">🛒</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mt-2">
+                    <div class="card main__card">
+                        <div class="overflow-hidden position-relative">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-top main__img transition-zoom">
+                        </div>
+                        <div class="card-body text-center main__card__content">
+                            <p class="card__text"><span>pavlova</span>-merengue frances,dulce de leche,crema batida,frutos rojos.</p>
+                            <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
+                            <button onclick="recetaFavorita(4)" 
+                            id="fav-4"
+                            data-id="4" class="btn-fav">❤️</button>
+                            <button onclick="agregarAlCarrito(4)" data-id="4" class="btn-agregar" title="$7800">🛒</button>
+                        </div>
+                    </div>
+                </div>
+        
             <div class="mt-4 text-uppercase text-center ">
                 <h3 class="layout__entrepaginas">sobre ustedes</h3>
             </div>
 
 <!--main-hoster-->
 
-            
-            <section class="card mt-4 text-center hoster__card">
-                <div class="row g-0">
-                    <div class="col-12 col-md-6">
-                        <div class="card-body hoster__cardbody">
-                        <h4 class="card-text pt-5 card__subtitulo">favorito de la semana</h4>
-                        <h2 class="card-title py-3 card__titulo">budin ingles-suave y lviano.</h2>
-                        <p class="card-text card__description">300grs de puro sabor, con frutos secos y arandanos deshidratados, terminacion con glaseado y cerezas frescas.</p>
-                        <a href="vermasrecetas-enlace-interno/index.html" class="btn hoster__btn">ver receta</a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <img src="imagenes-celi/receta-5.jpeg" class="img-fluid rounded-1 hoster__img" alt="que delicia">
-                    </div>
-                </div>
-            </section>
-
-            <section class="card mt-4 text-center hoster__card">
-                <div class="row g-0">
-                    <div class="col-12 col-md-6">
-                        <img src="imagenes-celi/receta-4.jpeg" class="img-fluid rounded-1 hoster__img" alt="que delicia">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="card-body hoster__cardbody">
-                            <h4 class="card-text pt-5 card__subtitulo">salados favorito</h4>
-                            <h2 class="card-title py-3 card__titulo">box saladito, scons, baguette, chipa, focaccia.</h2>
-                            <p class="card-text card__description">cuatro scons de queso pategras + mini pan baguette acompañado de hummus (garbanzo+oliva+pímenton) + 4 chipa de queso azul con corazon de nuez + lingote de focaccia (cherrys+romero+aceituna+oliva).</p>
+            <div class="layout__container">
+                <section class="card mt-4 text-center hoster__card">
+                    <div class="row g-0">
+                        <div class="col-12 col-md-6">
+                            <div class="card-body hoster__cardbody">
+                            <h4 class="card-text pt-5 card__subtitulo">favorito de la semana</h4>
+                            <h2 class="card-title py-3 card__titulo">budin ingles-suave y lviano.</h2>
+                            <p class="card-text card__description">300grs de puro sabor, con frutos secos y arandanos deshidratados, terminacion con glaseado y cerezas frescas.</p>
                             <a href="vermasrecetas-enlace-interno/index.html" class="btn hoster__btn">ver receta</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-1 hoster__img" alt="que delicia">
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            
+                <section class="card mt-4 text-center hoster__card">
+                    <div class="row g-0">
+                        <div class="col-12 col-md-6">
+                            <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="img-fluid rounded-1 hoster__img" alt="que delicia">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card-body hoster__cardbody">
+                                <h4 class="card-text pt-5 card__subtitulo">salados favorito</h4>
+                                <h2 class="card-title py-3 card__titulo">box saladito, scons, baguette, chipa, focaccia.</h2>
+                                <p class="card-text card__description">cuatro scons de queso pategras + mini pan baguette acompañado de hummus (garbanzo+oliva+pímenton) + 4 chipa de queso azul con corazon de nuez + lingote de focaccia (cherrys+romero+aceituna+oliva).</p>
+                                <a href="vermasrecetas-enlace-interno/index.html" class="btn hoster__btn">ver receta</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            </div>
         </div>
     </main>
 
@@ -208,20 +331,20 @@
         <div class="row">
             <div class="carousel carousel__img">
                 <div class="group">
-                    <img src="imagenes-celi/recetas-1.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-2.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-3.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-4.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-5.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-6.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
                 </div>
                 <div  aria-hidden class="group">
-                    <img src="imagenes-celi/recetas-1.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-2.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-3.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-4.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-5.jpeg" class="card  carousel__card">
-                    <img src="imagenes-celi/receta-6.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
+                    <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg" class="card  carousel__card">
                 </div>
             </div>
                 <div class="text-center" id="sectionfavs">
@@ -270,6 +393,7 @@
                 </div>
             </div>
     </footer>
+</layout>
     <script src="index.js"></script>
 </body>
 </html>
