@@ -19,8 +19,44 @@ body {
 .layout__navbar {
     position: fixed;
     background: #cddebb;
-    opacity: 0.7;
     z-index: 40;
+}
+
+.navbar--list--btns {
+    text-decoration: none;
+}
+
+.offcanvas__header{
+    border-bottom: 1px solid #fff7;
+}
+
+.offcanvass--title{
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.navbar__button {
+    background-color: #3333;
+}
+
+.navbar__offcanvas{
+    background-color: #859474;
+    color: white;
+
+}
+
+.offcanvas__btns, .offcanvas__btn{
+    list-style: none;
+    display: grid;
+    justify-content: start;
+    margin:0;
+    margin: 12px 0;
+    font-size: 0.9em;
+}
+
+.offcanvas__link{
+    text-decoration: none;
+    color: #eee;
 }
 
 .nav__link, .nav__link__carrito{

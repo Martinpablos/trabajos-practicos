@@ -28,15 +28,71 @@
                                 <i class="bi bi-search"></i>
                                 <input type="search" class="nav__search" placeholder="cual es tu antojo hoy?"
                                     title="escribe algo" maxlength="40">
+                                <div class="navbar-nab d-none d-md-block navbar--btns">
+                                    <ul class="navbar--list--btns">
+                                        <li class="nav--btn">
+                                            <a href="#" class="nav--btn">
+                                                dulce
+                                            </a>
+                                        </li>
+                                        <li class="nav--btn">
+                                            <a href="#" class="nav--btn">
+                                                salado
+                                            </a>
+                                        </li>
+                                        <li class="nav--btn">
+                                            <a href="#" class="nav--btn">
+                                                dsin lacteo
+                                            </a>
+                                        </li>
+                                        <li class="nav--btn">
+                                            <a href="#" class="nav--btn">
+                                                panaderia
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <form class="d-flex">
                                 <nav class="navbar navbar-expand-sm p-0">
                                     <div class="container-fluid p-0">
-                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#navbarScroll" aria-controls="navbarScroll"
-                                            aria-expanded="false" aria-label="Toggle navigation">
-                                            <span class="navbar-toggler-icon"></span>
-                                        </button>
+                                        <article class="navbar-toggler navbar__button" type="button"
+                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                                            aria-controls="offcanvasNavbar" aria-expanded="false"
+                                            aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon "></span>
+                                            <div class="offcanvas offcanvas-end navbar__offcanvas" tabindex="-1"
+                                                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                                                <div class="offcanvas-header offcanvas__header">
+                                                    <h5 class="offcanvas-title offcanvass--title"
+                                                        id="offcanvasNavbarLabel">celi</h5>
+                                                </div>
+                                                <div class="offcanvas__links">
+                                                    <ul class="offcanvas__btns">
+                                                        <li class="offcanvas__btn">
+                                                            <a href="#" class="offcanvas__link">
+                                                                dulce
+                                                            </a>
+                                                        </li>
+                                                        <li class="offcanvas__btn">
+                                                            <a href="#" class="offcanvas__link">
+                                                                salado
+                                                            </a>
+                                                        </li>
+                                                        <li class="offcanvas__btn">
+                                                            <a href="#" class="offcanvas__link">
+                                                                sin lacteos
+                                                            </a>
+                                                        </li>
+                                                        <li class="offcanvas__btn">
+                                                            <a href="#" class="offcanvas__link">
+                                                                panaderia
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </article>
                             </form>
                         </div>
                     </nav>
@@ -88,79 +144,9 @@
                                 <p class="card__text"><span>roulade
                                     </span>-arrolado de merengue.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
-                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
-                                    <button onclick="agregarAlCarrito(1)" data-id="1" class="btn-agregar"
-                                    title="$5600">🛒</button>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-3 mt-2">
-                        <div class="card main__card">
-                            <div class="overflow-hidden position-relative">
-                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
-                                    class="img-fluid rounded-top main__img transition-zoom">
-                            </div>
-                            <div class="card-body text-center main__card__content">
-                                <p class="card__text"><span>rogel</span>-mucho dulce de leche.</p>
-                                <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
-                                        receta</a>
-                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
-                                    <button onclick="agregarAlCarrito(2)" data-id="2" class="btn-agregar"
-                                    title="$6200">🛒</button>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-3 mt-2">
-                        <div class="card main__card">
-                            <div class="overflow-hidden position-relative">
-                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
-                                    class="img-fluid rounded-top main__img transition-zoom">
-                            </div>
-                            <div class="card-body text-center main__card__content">
-                                <p class="card__text"><span>panetton</span>relleno de trozos de chocolate.</p>
-                                <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
-                                        receta</a>
-                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
-                                    <button onclick="agregarAlCarrito(3)" data-id="3" class="btn-agregar"
-                                    title="$4500">🛒</button>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-3 mt-2">
-                        <div class="card main__card">
-                            <div class="overflow-hidden position-relative">
-                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
-                                    class="img-fluid rounded-top main__img transition-zoom">
-                            </div>
-                            <div class="card-body text-center main__card__content">
-                                <p class="card__text"><span>pavlova</span>-crema batida,frutos rojos.</p>
-                                <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
-                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
-                                    <button onclick="agregarAlCarrito(4)" data-id="4" class="btn-agregar"
-                                    title="$7800">🛒</button>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-3 mt-2">
-                        <div class="card main__card">
-                            <div class="overflow-hidden position-relative">
-                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
-                                    class="img-fluid rounded-top main__img transition-zoom">
-                            </div>
-                            <div class="card-body text-center main__card__content">
-                                <p class="card__text"><span>roulade
-                                    </span>-arrolado de merengue.</p>
-                                <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(1)" data-id="1" class="btn-agregar"
                                         title="$5600">🛒</button>
@@ -176,12 +162,13 @@
                             </div>
                             <div class="card-body text-center main__card__content">
                                 <p class="card__text"><span>rogel</span>-mucho dulce de leche.</p>
-                                <article class="card__btns">    
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                <article class="card__btns">
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(2)" data-id="2" class="btn-agregar"
-                                    title="$6200">🛒</button>
+                                        title="$6200">🛒</button>
                                 </article>
                             </div>
                         </div>
@@ -193,13 +180,14 @@
                                     class="img-fluid rounded-top main__img transition-zoom">
                             </div>
                             <div class="card-body text-center main__card__content">
-                                <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate.</p>
+                                <p class="card__text"><span>panetton</span>relleno de trozos de chocolate.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(3)" data-id="3" class="btn-agregar"
-                                    title="$4500">🛒</button>
+                                        title="$4500">🛒</button>
                                 </article>
                             </div>
                         </div>
@@ -213,7 +201,83 @@
                             <div class="card-body text-center main__card__content">
                                 <p class="card__text"><span>pavlova</span>-crema batida,frutos rojos.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver receta</a>
+                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
+                                    <button onclick="agregarAlCarrito(4)" data-id="4" class="btn-agregar"
+                                        title="$7800">🛒</button>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mt-2">
+                        <div class="card main__card">
+                            <div class="overflow-hidden position-relative">
+                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
+                                    class="img-fluid rounded-top main__img transition-zoom">
+                            </div>
+                            <div class="card-body text-center main__card__content">
+                                <p class="card__text"><span>roulade
+                                    </span>-arrolado de merengue.</p>
+                                <article class="card__btns">
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver receta</a>
+                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
+                                    <button onclick="agregarAlCarrito(1)" data-id="1" class="btn-agregar"
+                                        title="$5600">🛒</button>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mt-2">
+                        <div class="card main__card">
+                            <div class="overflow-hidden position-relative">
+                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
+                                    class="img-fluid rounded-top main__img transition-zoom">
+                            </div>
+                            <div class="card-body text-center main__card__content">
+                                <p class="card__text"><span>rogel</span>-mucho dulce de leche.</p>
+                                <article class="card__btns">
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
+                                        receta</a>
+                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
+                                    <button onclick="agregarAlCarrito(2)" data-id="2" class="btn-agregar"
+                                        title="$6200">🛒</button>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mt-2">
+                        <div class="card main__card">
+                            <div class="overflow-hidden position-relative">
+                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
+                                    class="img-fluid rounded-top main__img transition-zoom">
+                            </div>
+                            <div class="card-body text-center main__card__content">
+                                <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate.</p>
+                                <article class="card__btns">
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
+                                        receta</a>
+                                    <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
+                                    <button onclick="agregarAlCarrito(3)" data-id="3" class="btn-agregar"
+                                        title="$4500">🛒</button>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mt-2">
+                        <div class="card main__card">
+                            <div class="overflow-hidden position-relative">
+                                <img src="/trabajos-practicos-modulo1-2/imagenes-celi/celi-logo.jpeg"
+                                    class="img-fluid rounded-top main__img transition-zoom">
+                            </div>
+                            <div class="card-body text-center main__card__content">
+                                <p class="card__text"><span>pavlova</span>-crema batida,frutos rojos.</p>
+                                <article class="card__btns">
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(4)" data-id="4" class="btn-agregar"
@@ -232,11 +296,12 @@
                                 <p class="card__text"><span>roulade
                                     </span>-arrolado de merengue.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(1)" data-id="1" class="btn-agregar"
-                                    title="$5600">🛒</button>
+                                        title="$5600">🛒</button>
                                 </article>
                             </div>
                         </div>
@@ -250,11 +315,12 @@
                             <div class="card-body text-center main__card__content">
                                 <p class="card__text"><span>rogel</span>-mucho dulce de leche.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(2)" data-id="2" class="btn-agregar"
-                                    title="$6200">🛒</button>
+                                        title="$6200">🛒</button>
                                 </article>
                             </div>
                         </div>
@@ -268,11 +334,12 @@
                             <div class="card-body text-center main__card__content">
                                 <p class="card__text"><span>panetton</span>-500grs relleno de trozos de chocolate.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(3)" data-id="3" class="btn-agregar"
-                                    title="$4500">🛒</button>
+                                        title="$4500">🛒</button>
                                 </article>
                             </div>
                         </div>
@@ -286,11 +353,12 @@
                             <div class="card-body text-center main__card__content">
                                 <p class="card__text"><span>pavlova</span>-crema batida,frutos rojos.</p>
                                 <article class="card__btns">
-                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank" class="card__btn">ver
+                                    <a href="vermasrecetas-enlace-interno/index.html" target="_blank"
+                                        class="card__btn">ver
                                         receta</a>
                                     <!--<button onclick="recetaFavorita(2)" id="fav-2" data-id="2" class="btn-fav">❤️</button>-->
                                     <button onclick="agregarAlCarrito(4)" data-id="4" class="btn-agregar"
-                                    title="$7800">🛒</button>
+                                        title="$7800">🛒</button>
                                 </article>
                             </div>
                         </div>
