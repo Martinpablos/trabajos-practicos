@@ -12,6 +12,7 @@ body {
 
 .layout__nav {
     width: 100%;
+    max-width: 1000px;
     height: 55px;
     position: relative;
 }
@@ -20,10 +21,22 @@ body {
     position: fixed;
     background: #cddebb;
     z-index: 40;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .navbar--list--btns {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+
+.nav--btn{
     text-decoration: none;
+    color: #333;
+    margin: 0 10px;
 }
 
 .offcanvas__header{
