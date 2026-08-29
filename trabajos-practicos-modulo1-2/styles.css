@@ -159,6 +159,7 @@ body {
     height: 360px;
     font-size: 0.9em;
     border-radius: 7px 7px 0 0;
+    box-shadow: 0 0 10px #3336;
 }
 
 .main__title {
@@ -201,6 +202,7 @@ body {
 .card__btn:hover {
     background: #ffd8af;
     border: none;
+    transition: 250ms linear;
 }
 
 .btn-fav {
@@ -263,7 +265,7 @@ body {
     background: #fcf7f2 ;
     width: 100%;
     border: none;
-    box-shadow: 1px 0 5px #777;
+    box-shadow: 1px 0 10px #3336;
     border-radius: 4px;
 }
 
@@ -277,9 +279,7 @@ body {
 }
 
 .hoster__btn:hover {
-    border:none;
     background: #fda6 ;
-    transform: scale(1.1);
     transition: 250ms linear;
 }
 
