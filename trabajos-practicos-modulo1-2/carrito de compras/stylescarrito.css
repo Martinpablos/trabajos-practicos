@@ -8,10 +8,20 @@ body {
 
 /*nav*/
 
+.layout__nav {
+    width: 100%;
+    max-width: 1000px;
+    height: 55px;
+    position: relative;
+}
+
 .layout__navbar {
     position: fixed;
     background: #cddebb;
     z-index: 40;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .nav__link {
@@ -34,6 +44,40 @@ body {
 .layout__container {
     max-width: 1000px ;
     width: 100%;
+    margin: 0 auto;
+}
+
+.offcanvas__header{
+    border-bottom: 1px solid #fff7;
+}
+
+.offcanvass--title{
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.navbar__button {
+    background-color: #3333;
+}
+
+.navbar__offcanvas{
+    background-color: #859474;
+    color: white;
+
+}
+
+.offcanvas__btns, .offcanvas__btn{
+    list-style: none;
+    display: grid;
+    justify-content: start;
+    margin:0;
+    margin: 12px 0;
+    font-size: 0.9em;
+}
+
+.offcanvas__link{
+    text-decoration: none;
+    color: #eee;
 }
 
 /*header*/
@@ -56,15 +100,16 @@ body {
 }
 
 .layout__header {
-
     font-weight: 100;
 }
 
 .header__img {
     height: 140px;
-    width: 100%;
-    margin-top: 18px;
+    margin: 0%;
+    margin-top: 15px;
 }
+
+
 .btn-fav {
     border: none;
     background: transparent;
@@ -115,7 +160,7 @@ body {
 .btn__vaciarcarrito {
     background: #cddebb;
     border: none;
-    color: #777;
+    color: #555;
     padding: 10px 20px;
     border-radius: 5px;
 }
@@ -124,4 +169,29 @@ body {
     background: #fcf7f2;
     padding: 30px 20px;
     border-radius: 10px;
+}
+
+.link--btn--pedido {
+    background-color: #cddebb;
+    width: 40%;
+    margin-left: 10px;
+    display: flex;
+    font-size: 1.3em;
+    padding: 5px;
+    box-shadow: 0 0 10px #3333;
+}
+
+.link--btn--pedido:active{
+    box-shadow: 0 0 10px #333;
+}
+
+.link--content{
+    color: #333;
+    text-decoration: none;
+    margin: auto;
+}
+
+.link--pedido{
+    margin: 0 5px;
+    font-size: 0.7em;
 }

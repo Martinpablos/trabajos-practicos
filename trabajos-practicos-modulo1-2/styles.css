@@ -33,11 +33,6 @@ body {
     margin: auto;
 }
 
-.nav--btn{
-    text-decoration: none;
-    color: #333;
-    margin: 0 10px;
-}
 
 .offcanvas__header{
     border-bottom: 1px solid #fff7;
@@ -124,7 +119,6 @@ body {
     margin: 0;
     margin: auto;
 }
-
 
 
 /*seccion header*/
