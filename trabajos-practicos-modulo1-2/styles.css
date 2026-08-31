@@ -382,6 +382,58 @@ body {
     to {translate: -100%;}
 }
 
+/*comentarios*/
+
+.section--coments {
+    display: flex; 
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.8em;
+    width: 50%;
+    margin: auto;
+    padding: 15px;
+    background-color: #fcf7f2;
+    box-shadow: 0 0 10px #3332;
+}
+
+.coments--title{
+    margin: 15px;
+}
+
+.coments--name, .coments--text {
+    border:none;
+    border-radius: 5px;
+    color: #333;
+    background-color: #fc72;
+}
+
+.coments--btn{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 30%;
+    margin: auto;
+    margin-top: 5px;
+    background-color: #cddebb;
+    color: #333;
+}
+
+.list--coments{
+    display: flex;
+    margin: 10px 0;
+}
+
+#lista-comentarios{
+    display: flex;
+    flex-direction: row;
+    background-color: #fcf7f2;
+    box-shadow: 0 0 10px #3332;
+    color: #eee;
+    width: 40%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 
 /*footer*/
 

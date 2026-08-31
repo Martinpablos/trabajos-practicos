@@ -454,7 +454,24 @@
                 </div>
                 <div class="text-center" id="sectionfavs">
                     <h2 class="layout__entrepaginas"><span class="entrepaginas--ustedes">ustedes</span>❤️</h2>
-                    <div id="lista-favoritas"></div>
+
+                    <section class="seccion-comentarios section__coments">
+                        <h3 class="coments--title  layout__entrepaginas">Dejanos tu comentario</h3>
+                        <!-- agregar comentario -->
+                        <form onsubmit="agregarComentario(event)" class="section--coments">
+                            <input type="text" id="input-nombre-comentario" placeholder="Nombre (opcional)"
+                                class="coments--name">
+                            <textarea id="input-texto-comentario" placeholder="Dejanos tu comentario..." rows="6" 
+                                required class="coments--text" maxlength="150"></textarea>
+                            <button type="submit" class="coments--btn">
+                                Publicar
+                            </button>
+                        </form>
+                        <!-- Lista de comentarios -->
+                    </section>
+                    <article class="list--coments">
+                        <div id="lista-comentarios"></div>
+                    </article>
                 </div>
                 <div class="container d-flex align-items-center justify-content-between py-3">
                     <div class="d-flex justify-content-center">
