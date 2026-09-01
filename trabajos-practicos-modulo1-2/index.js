@@ -82,17 +82,19 @@ const renderComentarios = () => {
     }
 
     comentarios.forEach(c => {
-        contenedorComentarios.innerHTML += `
-            <div class="card-comentario" style="border-bottom: 1px solid #eee; padding: 10px 0; margin-bottom: 10px; text-align: left;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+        contenedorComentarios.innerHTML += 
+        `<div class="card-comentario" style="display:flex; margin: auto; width:1000px; ">
+            <div class="card-comentario" style="border: 1px solid #fc78; padding: 20px; margin: 15px 0; text-align: left; background-color: #fc72; border-radius:4px; width:100%;">
+                <div style="display: flex; justify-content: space-between;">
                     <strong style="color: #333;">${c.nombre}</strong>
-                    <small style="color: #888;">${c.fecha}</small>
+                    <small style="color: #5558;">${c.fecha}</small>
                 </div>
-                <p style="margin: 5px 0; color: #444;">${c.texto}</p>
-                <button onclick="eliminarComentario(${c.id})" style="background: none; border: none; color: #d9534f; cursor: pointer; font-size: 0.8rem; padding: 0;">
+                <p style="margin: 5px 0; color: #777;">${c.texto}</p>
+                <button onclick="eliminarComentario(${c.id})" style="background: none; border: none; color: #d9534f; cursor: pointer; font-size: 0.7rem; padding: 0;">
                     Eliminar
                 </button>
             </div>
+        </div>
         `;
     });
 };
