@@ -153,8 +153,8 @@ body {
 }
 
 .header__img {
-    height: 140px;
-    margin: 0%;
+    height: 110px;
+    margin-bottom: 20px;
 }
 
 
@@ -198,8 +198,9 @@ body {
 }
 
 .main__title {
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: 600;
+    color: #859474;   
 }
 
 .main__card__content {

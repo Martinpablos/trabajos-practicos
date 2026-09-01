@@ -38,7 +38,7 @@ body {
     border-radius: 20px;
     opacity: 0.7;
     background: transparent;
-    color: #444;
+    color: #444;  
 }
 
 .layout__container {
@@ -58,6 +58,7 @@ body {
 
 .navbar__button {
     background-color: #3333;
+    display: flex;
 }
 
 .navbar__offcanvas{

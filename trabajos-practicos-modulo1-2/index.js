@@ -76,11 +76,6 @@ const renderComentarios = () => {
 
     contenedorComentarios.innerHTML = "";
 
-    if (comentarios.length === 0) {
-        contenedorComentarios.innerHTML = `<p style="color: #666; font-style: italic;">Aún no hay comentarios. ¡Sé el primero en comentar!</p>`;
-        return;
-    }
-
     comentarios.forEach(c => {
         contenedorComentarios.innerHTML += 
         `<div class="card-comentario" style="display:flex; margin: auto; width:1000px; ">
