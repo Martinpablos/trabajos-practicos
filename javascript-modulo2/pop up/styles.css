@@ -1,0 +1,45 @@
+body {
+  border: 1px solid #333;
+}
+
+
+/* El fondo oscuro que cubre toda la pantalla */
+.overlay {
+  position: absolute;
+  top:0;
+  /* OCULTO POR DEFECTO */
+  opacity: 0;
+  pointer-events: none; /* No permite clics cuando está invisible */
+  transition: opacity 0.3s ease; /* Animación suave */
+}
+
+/* ESTADO ACTIVO: Cuando JS le agrega esta clase, el popup APARECE */
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+ /* Habilita los clics */
+}
+
+.spam{
+  position: absolute;
+  right: -400px;
+  top:850px;
+  background-color: #ac9;
+  padding: 10px;
+  border-radius: 40px;
+  /* OCULTO POR DEFECTO */
+  opacity: 0;
+  pointer-events: none; /* No permite clics cuando está invisible */
+  transition: opacity 0.3s ease; /* Animación suave */
+}
+
+.spam--content {
+  margin: 0 auto;
+  font-size: 0.7em;
+}
+
+.spam.active{
+  opacity: 1;
+  pointer-events: auto;
+ /* Habilita los clics */
+}
