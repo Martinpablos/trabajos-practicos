@@ -1,23 +1,18 @@
 function pantallaDeInicio() {
 
-    function crearLogo(){
-    return '<img src="#"/>';
+    function pedirNombre(){
+            let nombre = (prompt('Ingrese su nombre:'));
+            return nombre;
     }
     function crearSaludo(){
-    return '<p>Hola, bienvenido a JavaScript!</p>'
+    return ('Hola , bienvenido a JavaScript!');    
     }
 
     function mostrar() {
-        const logo = crearLogo();
+        const nombre = pedirNombre();
         const saludo = crearSaludo();
 
-        return 
-        ` 
-        <div>
-            ${logo}
-            ${saludo}
-        </div>
-        `;
+        return console.log(`Hola ${nombre}, bienvenido a JavaScript!`);
     }
     
     return {
