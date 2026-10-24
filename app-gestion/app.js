@@ -1,21 +1,24 @@
-// Importar Firebase desde los CDNs oficiales (versión modular 10)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// 1. TU CONFIGURACIÓN DE FIREBASE 
-// (Estos datos te los da Firebase gratis cuando creás un proyecto en su consola)
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "TU_API_KEY_AQUI",
-    authDomain: "tu-proyecto.firebaseapp.com",
-    projectId: "tu-proyecto",
-    storageBucket: "tu-proyecto.appspot.com",
-    messagingSenderId: "TU_SENDER_ID",
-    appId: "TU_APP_ID"
+    apiKey: "AIzaSyDa4nqcc3-ZWBk51cZPxJeegvyHEYMT_hg",
+    authDomain: "sistema-celi.firebaseapp.com",
+    projectId: "sistema-celi",
+    storageBucket: "sistema-celi.firebasestorage.app",
+    messagingSenderId: "167240526122",
+    appId: "1:167240526122:web:b160382d6c4087a6435653",
+    measurementId: "G-39YYQFK8QV"
 };
 
-// Inicializar Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const analytics = getAnalytics(app);
 
 // 2. FUNCIÓN PARA LEER MATERIA PRIMA DESDE FIREBASE
 async function cargarMateriasPrimas() {
@@ -67,3 +70,28 @@ async function guardarMateriaPrima(nombre, cantidad, precio, stock) {
 document.addEventListener("DOMContentLoaded", () => {
     cargarMateriasPrimas();
 });
+
+
+import { doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Capturar el envío del formulario de manera correcta
+const formMateriaPrima = document.getElementById("formMateriaPrima");
+if (formMateriaPrima) {
+    formMateriaPrima.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById("mpNombre").value;
+        const cantidad = document.getElementById("mpCantidad").value;
+        const precio = document.getElementById("mpPrecio").value;
+        const stock = document.getElementById("mpStock").value;
+
+        // Ahora sí, el await está dentro de una función async (el addEventListener)
+        await guardarMateriaPrima(nombre, cantidad, precio, stock);
+
+        // Limpiar formulario y cerrar modal
+        formMateriaPrima.reset();
+        const modalEl = document.getElementById('modalMateriaPrima');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) modal.hide();
+    });
+}
