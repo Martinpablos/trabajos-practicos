@@ -1,0 +1,30 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8f9fa;
+}
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    background-color: #d2dc9e;
+    border-right: 1px solid #c2cc8e;
+}
+.sidebar .nav-link {
+    color: #2c3e2d;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background-color: #b5c478;
+    color: #1a261b;
+}
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+}
+.custom-card {
+    background-color: #fcfade;
+    border: 1px solid #e6ecb8;
+    border-radius: 12px;
+}
