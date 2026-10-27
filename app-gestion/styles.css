@@ -28,3 +28,11 @@ body {
     border: 1px solid #e6ecb8;
     border-radius: 12px;
 }
+
+/* Personalizar la cabecera de las tablas */
+.table thead th {
+    background-color: #e6ecb8 !important; 
+    color: #2c3e2d !important;            
+    font-weight: 700;
+    border-bottom: 2px solid #d2dc9e;
+}

@@ -1,13 +1,10 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Importar Firebase desde los CDNs oficiales
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Tus credenciales reales de Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDa4nqcc3-ZWBk51cZPxJeegvyHEYMT_hg",
+    apiKey: "AIzaSyDa4nqcc3-ZWbK51cZPxJeegvyHEYMT_hg",
     authDomain: "sistema-celi.firebaseapp.com",
     projectId: "sistema-celi",
     storageBucket: "sistema-celi.firebasestorage.app",
@@ -16,30 +13,40 @@ const firebaseConfig = {
     measurementId: "G-39YYQFK8QV"
 };
 
-// Initialize Firebase
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
-// 2. FUNCIÓN PARA LEER MATERIA PRIMA DESDE FIREBASE
+// Variable global para saber si estamos editando y qué ID
+let idItemEnEdicion = null;
+
+// 1. FUNCIÓN PARA LEER Y MOSTRAR LAS MATERIAS PRIMAS EN LA TABLA
 async function cargarMateriasPrimas() {
     const tabla = document.getElementById("tabla-materia-prima");
     if (!tabla) return;
 
-    tabla.innerHTML = ""; // Limpiar tabla
+    tabla.innerHTML = ""; 
     
     try {
         const querySnapshot = await getDocs(collection(db, "materiaPrima"));
-        querySnapshot.forEach((doc) => {
-            const item = doc.data();
+        querySnapshot.forEach((docSnap) => {
+            const item = docSnap.data();
+            const id = docSnap.id;
+            
+            const cantidad = Number(item.cantidad) || 0;
+            const precio = Number(item.precio) || 0;
+            const stock = Number(item.stock) || 0;
+            const costoUnitario = cantidad > 0 ? (precio / cantidad).toFixed(2) : "0.00";
+
             tabla.innerHTML += `
                 <tr>
-                    <td>${item.nombre}</td>
-                    <td>${item.cantidad}</td>
-                    <td>$${item.precio}</td>
-                    <td>$${(item.precio / item.cantidad).toFixed(2)}</td>
-                    <td><span class="badge bg-success">Disponible (${item.stock}kg)</span></td>
+                    <td><strong>${item.nombre || "Sin nombre"}</strong></td>
+                    <td>${cantidad}</td>
+                    <td>$${precio}</td>
+                    <td>$${costoUnitario}</td>
+                    <td><span class="badge bg-success">Disponible (${stock}kg)</span></td>
                     <td>
-                        <button class="btn btn-sm btn-outline-secondary">Editar</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="prepararEdicion('${id}')">Editar</button>
                     </td>
                 </tr>
             `;
@@ -49,7 +56,7 @@ async function cargarMateriasPrimas() {
     }
 }
 
-// 3. FUNCIÓN PARA GUARDAR NUEVA MATERIA PRIMA EN LA NUBE
+// 2. FUNCIÓN PARA GUARDAR NUEVA MATERIA PRIMA
 async function guardarMateriaPrima(nombre, cantidad, precio, stock) {
     try {
         await addDoc(collection(db, "materiaPrima"), {
@@ -59,22 +66,53 @@ async function guardarMateriaPrima(nombre, cantidad, precio, stock) {
             stock: Number(stock),
             fecha: new Date()
         });
-        console.log("¡Guardado exitoso en Firebase!");
-        cargarMateriasPrimas(); // Recargar la tabla automáticamente
+        cargarMateriasPrimas();
     } catch (e) {
         console.error("Error al guardar en Firebase: ", e);
     }
 }
 
-// Ejecutar al iniciar la app
-document.addEventListener("DOMContentLoaded", () => {
-    cargarMateriasPrimas();
-});
+// 3. FUNCIÓN PARA ACTUALIZAR MATERIA PRIMA EXISTENTE
+async function actualizarMateriaPrima(id, nombre, cantidad, precio, stock) {
+    try {
+        const refDoc = doc(db, "materiaPrima", id);
+        await updateDoc(refDoc, {
+            nombre: nombre,
+            cantidad: Number(cantidad),
+            precio: Number(precio),
+            stock: Number(stock)
+        });
+        cargarMateriasPrimas();
+    } catch (e) {
+        console.error("Error al actualizar: ", e);
+    }
+}
 
+// 4. FUNCIÓN GLOBAL PARA PREPARAR EL MODAL AL HACER CLIC EN EDITAR
+window.prepararEdicion = async function(id) {
+    try {
+        const refDoc = doc(db, "materiaPrima", id);
+        const snapshot = await getDoc(refDoc);
+        
+        if (snapshot.exists()) {
+            const data = snapshot.data();
+            document.getElementById("mpNombre").value = data.nombre;
+            document.getElementById("mpCantidad").value = data.cantidad;
+            document.getElementById("mpPrecio").value = data.precio;
+            document.getElementById("mpStock").value = data.stock;
+            
+            idItemEnEdicion = id; 
 
-import { doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+            const modalEl = document.getElementById('modalMateriaPrima');
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+        }
+    } catch (e) {
+        console.error("Error al cargar datos para editar: ", e);
+    }
+};
 
-// Capturar el envío del formulario de manera correcta
+// 5. CAPTURAR EL ENVÍO DEL FORMULARIO (CREAR O EDITAR)
 const formMateriaPrima = document.getElementById("formMateriaPrima");
 if (formMateriaPrima) {
     formMateriaPrima.addEventListener("submit", async (e) => {
@@ -85,13 +123,39 @@ if (formMateriaPrima) {
         const precio = document.getElementById("mpPrecio").value;
         const stock = document.getElementById("mpStock").value;
 
-        // Ahora sí, el await está dentro de una función async (el addEventListener)
-        await guardarMateriaPrima(nombre, cantidad, precio, stock);
+        if (idItemEnEdicion) {
+            await actualizarMateriaPrima(idItemEnEdicion, nombre, cantidad, precio, stock);
+            idItemEnEdicion = null; 
+        } else {
+            await guardarMateriaPrima(nombre, cantidad, precio, stock);
+        }
 
-        // Limpiar formulario y cerrar modal
         formMateriaPrima.reset();
         const modalEl = document.getElementById('modalMateriaPrima');
         const modal = bootstrap.Modal.getInstance(modalEl);
         if (modal) modal.hide();
     });
 }
+
+// 6. BUSCADOR EN TIEMPO REAL
+const buscadorMp = document.getElementById("buscadorMp");
+if (buscadorMp) {
+    buscadorMp.addEventListener("input", (e) => {
+        const textoBusqueda = e.target.value.toLowerCase();
+        const filas = document.querySelectorAll("#tabla-materia-prima tr");
+
+        filas.forEach(fila => {
+            const nombreInsumo = fila.querySelector("td").textContent.toLowerCase();
+            if (nombreInsumo.includes(textoBusqueda)) {
+                fila.style.display = "";
+            } else {
+                fila.style.display = "none";
+            }
+        });
+    });
+}
+
+// 7. CARGAR LA TABLA AL ABRIR LA PÁGINA
+document.addEventListener("DOMContentLoaded", () => {
+    cargarMateriasPrimas();
+});

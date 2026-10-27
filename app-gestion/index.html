@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="sidebar d-flex flex-column p-4">
-        <h4 class="fw-bold mb-4 text-dark">Celi</h4>
+        <h4 class="fw-bold mb-4 text-dark">Celicitas</h4>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="#materia-prima" class="nav-link active" data-bs-toggle="tab">Materia Prima</a>
@@ -37,29 +37,35 @@
         <div class="tab-content">
 
             <!-- SECCIÓN 1: MATERIA PRIMA -->
-            <div class="tab-pane fade show active" id="materia-prima">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="all--titulo">Gestión de Materia Prima</h2>
-                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalMateriaPrima">+ Nueva Materia Prima</button>
-                </div>
-                
-                <div class="card custom-card p-4 shadow-sm">
-                    <table class="table align-middle">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cantidad Comprada</th>
-                                <th>Precio Total</th>
-                                <th>Costo (gr/ml)</th>
-                                <th>Stock Actual</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabla-materia-prima">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<div class="tab-pane fade show active" id="materia-prima">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestión de Materia Prima</h2>
+        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalMateriaPrima">+ Nueva Materia Prima</button>
+    </div>
+    
+    <!-- NUEVO: BARRA DE BÚSQUEDA -->
+    <div class="mb-3">
+        <input type="text" id="buscadorMp" class="form-control custom-card" placeholder="🔍 Buscar materia prima por nombre...">
+    </div>
+
+    <div class="card custom-card p-4 shadow-sm">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad Comprada</th>
+                    <th>Precio Total</th>
+                    <th>Costo (gr/ml)</th>
+                    <th>Stock Actual</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-materia-prima">
+                <!-- Se carga dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+</div>
             <!-- BOTON DE NUEVA MATERIA PRIMA -->
             <div class="modal fade" id="modalMateriaPrima" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
