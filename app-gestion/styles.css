@@ -13,7 +13,6 @@ body {
     color: #2c3e2d;
     font-weight: 600;
     margin-bottom: 8px;
-    border-radius: 8px;
 }
 .sidebar .nav-link.active, .sidebar .nav-link:hover {
     background-color: #b5c478;
@@ -26,7 +25,6 @@ body {
 .custom-card {
     background-color: #fcfade;
     border: 1px solid #e6ecb8;
-    border-radius: 12px;
 }
 
 /* Personalizar la cabecera de las tablas */
@@ -35,4 +33,14 @@ body {
     color: #2c3e2d !important;            
     font-weight: 700;
     border-bottom: 2px solid #d2dc9e;
+}
+
+.card, 
+.custom-card, 
+.modal-content, 
+.form-control, 
+.btn, 
+.badge,
+.table {
+    border-radius: 0px !important;
 }

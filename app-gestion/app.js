@@ -2,6 +2,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+// Importar las funciones del módulo de recetas
+import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarReceta, cargarRecetas } from "./recetas.js";
+
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDa4nqcc3-ZWbK51cZPxJeegvyHEYMT_hg",
@@ -13,14 +16,15 @@ const firebaseConfig = {
     measurementId: "G-39YYQFK8QV"
 };
 
-// Inicializar Firebase
+// Inicializar Firebase y EXPORTAR 'db' para que otros archivos la usen
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
-// Variable global para saber si estamos editando y qué ID
+// ==========================================
+// 1. LÓGICA DE MATERIA PRIMA
+// ==========================================
 let idItemEnEdicion = null;
 
-// 1. FUNCIÓN PARA LEER Y MOSTRAR LAS MATERIAS PRIMAS EN LA TABLA
 async function cargarMateriasPrimas() {
     const tabla = document.getElementById("tabla-materia-prima");
     if (!tabla) return;
@@ -56,7 +60,6 @@ async function cargarMateriasPrimas() {
     }
 }
 
-// 2. FUNCIÓN PARA GUARDAR NUEVA MATERIA PRIMA
 async function guardarMateriaPrima(nombre, cantidad, precio, stock) {
     try {
         await addDoc(collection(db, "materiaPrima"), {
@@ -72,7 +75,6 @@ async function guardarMateriaPrima(nombre, cantidad, precio, stock) {
     }
 }
 
-// 3. FUNCIÓN PARA ACTUALIZAR MATERIA PRIMA EXISTENTE
 async function actualizarMateriaPrima(id, nombre, cantidad, precio, stock) {
     try {
         const refDoc = doc(db, "materiaPrima", id);
@@ -88,7 +90,6 @@ async function actualizarMateriaPrima(id, nombre, cantidad, precio, stock) {
     }
 }
 
-// 4. FUNCIÓN GLOBAL PARA PREPARAR EL MODAL AL HACER CLIC EN EDITAR
 window.prepararEdicion = async function(id) {
     try {
         const refDoc = doc(db, "materiaPrima", id);
@@ -112,7 +113,6 @@ window.prepararEdicion = async function(id) {
     }
 };
 
-// 5. CAPTURAR EL ENVÍO DEL FORMULARIO (CREAR O EDITAR)
 const formMateriaPrima = document.getElementById("formMateriaPrima");
 if (formMateriaPrima) {
     formMateriaPrima.addEventListener("submit", async (e) => {
@@ -137,7 +137,6 @@ if (formMateriaPrima) {
     });
 }
 
-// 6. BUSCADOR EN TIEMPO REAL
 const buscadorMp = document.getElementById("buscadorMp");
 if (buscadorMp) {
     buscadorMp.addEventListener("input", (e) => {
@@ -155,7 +154,42 @@ if (buscadorMp) {
     });
 }
 
-// 7. CARGAR LA TABLA AL ABRIR LA PÁGINA
+
+// ==========================================
+// 2. INICIALIZACIÓN GENERAL AL CARGAR LA PÁGINA
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
+    // Cargar Materia Prima
     cargarMateriasPrimas();
+
+    // Cargar Recetas y preparar selectores
+    cargarRecetas();
+    cargarInsumosParaSelect();
+
+    // Evento botón "+ Agregar Ingrediente" (en el modal de recetas)
+    const btnAgregarIngrediente = document.getElementById("btnAgregarFilaIngrediente");
+    if (btnAgregarIngrediente) {
+        btnAgregarIngrediente.addEventListener("click", () => {
+            agregarFilaIngrediente();
+        });
+    }
+
+    // Evento envío de formulario Receta
+    const formReceta = document.getElementById("formReceta");
+    if (formReceta) {
+        formReceta.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById("recetaNombre").value;
+            const tipo = document.getElementById("recetaTipo").value;
+            const rendimiento = document.getElementById("recetaRendimiento").value;
+
+            await guardarReceta(nombre, tipo, rendimiento);
+
+            formReceta.reset();
+            document.getElementById("contenedorIngredientes").innerHTML = "";
+            const modalEl = document.getElementById('modalReceta');
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            if (modal) modal.hide();
+        });
+    }
 });

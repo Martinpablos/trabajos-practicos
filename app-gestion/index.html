@@ -99,11 +99,80 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade d-flex justify-content-between align-items-center mb-4" id="recetas">
-                <h2 class="mb-4">Recetas y Sub-recetas</h2>
-                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalReceta">+ Nueva receta</button>
-                <p class="text-muted">Acá irá la grilla de tarjetas de recetas.</p>
-            </div>
+            <!-- SECCIÓN 2: RECETAS Y SUB-RECETAS -->
+                <div class="tab-pane fade" id="recetas">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Gestión de Recetas y Productos</h2>
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalReceta">+ Nueva Receta</button>
+                    </div>
+
+                    <!-- BARRA DE BÚSQUEDA DE RECETAS -->
+                    <div class="mb-3">
+                        <input type="text" id="buscadorRecetas" class="form-control custom-card" placeholder="🔍 Buscar receta o producto por nombre...">
+                    </div>
+                
+                    <div class="card custom-card p-4 shadow-sm">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Nombre de la Receta</th>
+                                    <th>Tipo</th>
+                                    <th>Rendimiento</th>
+                                    <th>Costo Total</th>
+                                    <th>Costo Unitario</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-recetas">
+                                <!-- Los datos de las recetas se cargarán dinámicamente aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- MODAL NUEVA / EDITAR RECETA -->
+                <div class="modal fade" id="modalReceta" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content custom-card p-3">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title fw-bold">Gestión de Receta / Producto</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formReceta">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre de la Receta o Producto</label>
+                                        <input type="text" class="form-control" id="recetaNombre" required placeholder="Ej: Pan de Miga, Sándwich de Miga...">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Tipo</label>
+                                            <select class="form-control" id="recetaTipo">
+                                                <option value="subreceta">Sub-receta (Ej: Pan de Miga)</option>
+                                                <option value="final">Producto Final (Ej: Sándwich de Miga)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Rendimiento (Unidades que salen)</label>
+                                            <input type="number" step="any" class="form-control" id="recetaRendimiento" required placeholder="6">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Ingredientes y Sub-recetas</label>
+                                        <p class="text-muted small">Aquí seleccionaremos los insumos de la base de datos para armar la receta.</p>
+                                        <!-- Espacio dinámico para agregar ingredientes -->
+                                        <div id="contenedorIngredientes" class="border p-3 mb-3 custom-card">
+                                            <!-- Los ítems seleccionados se agregarán aquí -->
+                                        </div>
+                                        <button type="button" class="btn btn-outline-dark btn-sm" id="btnAgregarFilaIngrediente">+ Agregar Ingrediente</button>
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-dark w-100 py-2 mt-3">Guardar Receta</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             <div class="tab-pane fade" id="stock">
                 <h2 class="mb-4">Control de Stock (Productos Terminados)</h2>
@@ -120,9 +189,9 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- archivo de Lógica y Firebase -->
-    <script type="module" src="app.js"></script>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Archivo principal de Lógica y Firebase -->
+<script type="module" src="app.js"></script>
 </body>
 </html>
