@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Importar las funciones del módulo de recetas
-import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarReceta, cargarRecetas } from "./recetas.js";
+import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarReceta, cargarRecetas } from "./recetas.js";
 
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Evento envío de formulario Receta
+   // Evento envío de formulario Receta
     const formReceta = document.getElementById("formReceta");
     if (formReceta) {
         formReceta.addEventListener("submit", async (e) => {
@@ -183,7 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const tipo = document.getElementById("recetaTipo").value;
             const rendimiento = document.getElementById("recetaRendimiento").value;
 
-            await guardarReceta(nombre, tipo, rendimiento);
+            // Llamamos a la función correcta unificada
+            await guardarOActualizarReceta(nombre, tipo, rendimiento);
 
             formReceta.reset();
             document.getElementById("contenedorIngredientes").innerHTML = "";
