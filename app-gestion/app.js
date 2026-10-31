@@ -1,6 +1,6 @@
 // Importar Firebase desde los CDNs oficiales
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Importar las funciones del módulo de recetas
 import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarReceta, cargarRecetas } from "./recetas.js";
@@ -48,9 +48,10 @@ async function cargarMateriasPrimas() {
                     <td>${cantidad}</td>
                     <td>$${precio}</td>
                     <td>$${costoUnitario}</td>
-                    <td><span class="badge bg-success">Disponible (${stock}kg)</span></td>
+                    <td><span class="badge bg-success">Disponible (${stock}u)</span></td>
                     <td>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="prepararEdicion('${id}')">Editar</button>
+                        <button class="btn btn-sm btn-outline-secondary me-1" onclick="prepararEdicion('${id}')">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="eliminarMateriaPrima('${id}')">Eliminar</button>
                     </td>
                 </tr>
             `;
@@ -59,6 +60,17 @@ async function cargarMateriasPrimas() {
         console.error("Error al cargar datos de Firebase: ", e);
     }
 }
+
+window.eliminarMateriaPrima = async function(id) {
+    if (confirm("¿Estás seguro de que querés eliminar esta materia prima?")) {
+        try {
+            await deleteDoc(doc(db, "materiaPrima", id));
+            cargarMateriasPrimas();
+        } catch (e) {
+            console.error("Error al eliminar la materia prima: ", e);
+        }
+    }
+};
 
 async function guardarMateriaPrima(nombre, cantidad, precio, stock) {
     try {
