@@ -22,7 +22,7 @@
                 <a href="#recetas" class="nav-link" data-bs-toggle="tab">Recetas</a>
             </li>
             <li class="nav-item">
-                <a href="#stock" class="nav-link" data-bs-toggle="tab">Stock</a>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#stock">Stock de Productos</button>
             </li>
             <li class="nav-item">
                 <a href="#ventas" class="nav-link" data-bs-toggle="tab">Cargar Venta</a>
@@ -173,6 +173,37 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- SECCIÓN 3: STOCK DE PRODUCTOS TERMINADOS -->
+            <div class="tab-pane fade" id="stock">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Control de Stock (Productos Terminados)</h2>
+                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalStock">+ Registrar Producción / Salida</button>
+                </div>
+            
+                <!-- BARRA DE BÚSQUEDA DE STOCK -->
+                <div class="mb-3">
+                    <input type="text" id="buscadorStock" class="form-control custom-card" placeholder="🔍 Buscar producto terminado...">
+                </div>
+            
+                <!-- TABLA DE STOCK -->
+                <div class="card custom-card p-4 shadow-sm">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Stock Actual (Unidades)</th>
+                                <th>Costo Unitario de Producción</th>
+                                <th>Valor Total en Stock</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-stock">
+                            <!-- Los datos de stock se cargarán dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <div class="tab-pane fade" id="stock">
                 <h2 class="mb-4">Control de Stock (Productos Terminados)</h2>
