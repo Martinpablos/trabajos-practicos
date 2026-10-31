@@ -1,5 +1,5 @@
 import { db } from "./app.js";
-import { collection, getDocs, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // 1. Cargar y renderizar la tabla de Lista de Precios
 export async function cargarListaPrecios() {
@@ -19,9 +19,7 @@ export async function cargarListaPrecios() {
             if (producto.tipo === "producto_final" || producto.tipo === "final") {
                 const costoUnitario = Number(producto.costoUnitario) || 0;
                 
-                // Margen minorista (predeterminado 100% si no está definido)
                 const margenMinorista = producto.margenMinorista !== undefined ? Number(producto.margenMinorista) : 100;
-                // Margen mayorista (predeterminado 50% si no está definido)
                 const margenMayorista = producto.margenMayorista !== undefined ? Number(producto.margenMayorista) : 50;
 
                 const precioMinorista = costoUnitario * (1 + margenMinorista / 100);
@@ -44,7 +42,7 @@ export async function cargarListaPrecios() {
                             </div>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-outline-dark" onclick="editarMargenes('${id}', '${producto.nombre}', ${margenMinorista}, ${margenMayorista})">
+                            <button class="btn btn-sm btn-outline-dark" onclick="abrirModalMargenes('${id}', '${producto.nombre}', ${margenMinorista}, ${margenMayorista})">
                                 ✏️ Editar Margenes
                             </button>
                         </td>
@@ -57,30 +55,52 @@ export async function cargarListaPrecios() {
     }
 }
 
-// 2. Editar márgenes de ganancia individual para un producto
-window.editarMargenes = async function(id, nombre, actualMinorista, actualMayorista) {
-    const nuevoMinorista = prompt(`Margen Minorista (%) para "${nombre}":`, actualMinorista);
-    if (nuevoMinorista === null) return;
+// 2. Abrir el modal y cargar los datos actuales
+window.abrirModalMargenes = function(id, nombre, actualMinorista, actualMayorista) {
+    document.getElementById("productoIdMargen").value = id;
+    document.getElementById("tituloModalMargenes").textContent = `Editar Márgenes: ${nombre}`;
+    document.getElementById("inputMargenMinorista").value = actualMinorista;
+    document.getElementById("inputMargenMayorista").value = actualMayorista;
 
-    const nuevoMayorista = prompt(`Margen Mayorista (%) para "${nombre}":`, actualMayorista);
-    if (nuevoMayorista === null) return;
-
-    const pctMinorista = Math.max(0, Number(nuevoMinorista) || 0);
-    const pctMayorista = Math.max(0, Number(nuevoMayorista) || 0);
-
-    try {
-        const refDoc = doc(db, "recetas", id);
-        await updateDoc(refDoc, {
-            margenMinorista: pctMinorista,
-            margenMayorista: pctMayorista
-        });
-        cargarListaPrecios();
-    } catch (e) {
-        console.error("Error al actualizar márgenes de ganancia: ", e);
-    }
+    // Mostrar el modal usando Bootstrap
+    const modalElement = document.getElementById("modalMargenes");
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
 };
 
-// 3. Conectar el buscador de lista de precios
+// 3. Guardar los cambios del modal en Firebase
+document.addEventListener("DOMContentLoaded", () => {
+    const formMargenes = document.getElementById("formMargenes");
+    if (formMargenes) {
+        formMargenes.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const id = document.getElementById("productoIdMargen").value;
+            const nuevoMinorista = Number(document.getElementById("inputMargenMinorista").value) || 0;
+            const nuevoMayorista = Number(document.getElementById("inputMargenMayorista").value) || 0;
+
+            try {
+                const refDoc = doc(db, "recetas", id);
+                await updateDoc(refDoc, {
+                    margenMinorista: nuevoMinorista,
+                    margenMayorista: nuevoMayorista
+                });
+
+                // Cerrar el modal
+                const modalElement = document.getElementById("modalMargenes");
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                modal.hide();
+
+                // Recargar tabla de precios
+                cargarListaPrecios();
+            } catch (error) {
+                console.error("Error al actualizar márgenes: ", error);
+            }
+        });
+    }
+});
+
+// 4. Conectar el buscador de lista de precios
 export function inicializarBuscadorPrecios() {
     const buscadorPrecios = document.getElementById("buscadorPrecios");
     if (buscadorPrecios) {
