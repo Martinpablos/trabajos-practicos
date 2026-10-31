@@ -4,6 +4,7 @@ import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc, dele
 
 // Importar las funciones del módulo de recetas
 import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarReceta, cargarRecetas } from "./recetas.js";
+import { cargarStockProductos, inicializarBuscadorStock } from "./stock.js";
 
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
@@ -177,6 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cargar Recetas y preparar selectores
     cargarRecetas();
     cargarInsumosParaSelect();
+
+    // Cargar Stock de Productos y Buscador
+    cargarStockProductos();
+    inicializarBuscadorStock();
 
     // Evento botón "+ Agregar Ingrediente" (en el modal de recetas)
     const btnAgregarIngrediente = document.getElementById("btnAgregarFilaIngrediente");
