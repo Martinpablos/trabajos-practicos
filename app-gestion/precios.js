@@ -1,5 +1,5 @@
 import { db } from "./app.js";
-import { collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { collection, getDocs, doc, updateDoc, writeBatch } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // 1. Cargar y renderizar la tabla de Lista de Precios
 export async function cargarListaPrecios() {
@@ -15,7 +15,6 @@ export async function cargarListaPrecios() {
             const producto = docSnap.data();
             const id = docSnap.id;
 
-            // Solo mostramos Productos Finales en la lista de precios
             if (producto.tipo === "producto_final" || producto.tipo === "final") {
                 const costoUnitario = Number(producto.costoUnitario) || 0;
                 
@@ -26,7 +25,7 @@ export async function cargarListaPrecios() {
                 const precioMayorista = costoUnitario * (1 + margenMayorista / 100);
 
                 tabla.innerHTML += `
-                    <tr>
+                    <tr class="fila-producto">
                         <td><strong>${producto.nombre || "Sin nombre"}</strong></td>
                         <td>$${costoUnitario.toFixed(2)}</td>
                         <td>
@@ -41,9 +40,9 @@ export async function cargarListaPrecios() {
                                 <small class="text-muted">+${margenMayorista}% ganancia</small>
                             </div>
                         </td>
-                        <td>
+                        <td class="columna-acciones">
                             <button class="btn btn-sm btn-outline-dark" onclick="abrirModalMargenes('${id}', '${producto.nombre}', ${margenMinorista}, ${margenMayorista})">
-                                ✏️ Editar Margenes
+                                ✏️ Editar
                             </button>
                         </td>
                     </tr>
@@ -55,52 +54,97 @@ export async function cargarListaPrecios() {
     }
 }
 
-// 2. Abrir el modal y cargar los datos actuales
+// 2. Abrir modal individual
 window.abrirModalMargenes = function(id, nombre, actualMinorista, actualMayorista) {
     document.getElementById("productoIdMargen").value = id;
     document.getElementById("tituloModalMargenes").textContent = `Editar Márgenes: ${nombre}`;
     document.getElementById("inputMargenMinorista").value = actualMinorista;
     document.getElementById("inputMargenMayorista").value = actualMayorista;
 
-    // Mostrar el modal usando Bootstrap
     const modalElement = document.getElementById("modalMargenes");
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
 };
 
-// 3. Guardar los cambios del modal en Firebase
+// 3. Guardar cambios individuales y globales
 document.addEventListener("DOMContentLoaded", () => {
+    // Formulario individual
     const formMargenes = document.getElementById("formMargenes");
     if (formMargenes) {
         formMargenes.addEventListener("submit", async (e) => {
             e.preventDefault();
-
             const id = document.getElementById("productoIdMargen").value;
             const nuevoMinorista = Number(document.getElementById("inputMargenMinorista").value) || 0;
             const nuevoMayorista = Number(document.getElementById("inputMargenMayorista").value) || 0;
 
             try {
                 const refDoc = doc(db, "recetas", id);
-                await updateDoc(refDoc, {
-                    margenMinorista: nuevoMinorista,
-                    margenMayorista: nuevoMayorista
-                });
+                await updateDoc(refDoc, { margenMinorista: nuevoMinorista, margenMayorista: nuevoMayorista });
 
-                // Cerrar el modal
                 const modalElement = document.getElementById("modalMargenes");
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                modal.hide();
-
-                // Recargar tabla de precios
+                bootstrap.Modal.getInstance(modalElement).hide();
                 cargarListaPrecios();
             } catch (error) {
                 console.error("Error al actualizar márgenes: ", error);
             }
         });
     }
+
+    // Formulario global (actualiza masivamente todos los productos finales)
+    const formConfigGlobal = document.getElementById("formConfigGlobal");
+    if (formConfigGlobal) {
+        formConfigGlobal.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const nuevoMinorista = Number(document.getElementById("globalMinorista").value) || 0;
+            const nuevoMayorista = Number(document.getElementById("globalMayorista").value) || 0;
+
+            if (confirm(`¿Estás seguro de aplicar ${nuevoMinorista}% minorista y ${nuevoMayorista}% mayorista a TODOS los productos?`)) {
+                try {
+                    const querySnapshot = await getDocs(collection(db, "recetas"));
+                    const batch = writeBatch(db);
+
+                    querySnapshot.forEach((docSnap) => {
+                        const producto = docSnap.data();
+                        if (producto.tipo === "producto_final" || producto.tipo === "final") {
+                            const refDoc = doc(db, "recetas", docSnap.id);
+                            batch.update(refDoc, { 
+                                margenMinorista: nuevoMinorista, 
+                                margenMayorista: nuevoMayorista 
+                            });
+                        }
+                    });
+
+                    await batch.commit();
+
+                    const modalElement = document.getElementById("modalConfigGlobal");
+                    bootstrap.Modal.getInstance(modalElement).hide();
+                    cargarListaPrecios();
+                    alert("¡Márgenes globales actualizados con éxito!");
+                } catch (error) {
+                    console.error("Error al actualizar márgenes globales: ", error);
+                }
+            }
+        });
+    }
 });
 
-// 4. Conectar el buscador de lista de precios
+// 4. Función para imprimir / exportar PDF prolijo
+window.imprimirListaPrecios = function() {
+    // Ocultamos temporalmente elementos que no deben salir en el PDF (botones y buscador)
+    const buscador = document.getElementById("buscadorPrecios");
+    if (buscador) buscador.parentElement.style.display = "none";
+
+    const columnasAcciones = document.querySelectorAll(".columna-acciones");
+    columnasAcciones.forEach(col => col.style.display = "none");
+
+    window.print();
+
+    // Restauramos la vista normal después de imprimir
+    if (buscador) buscador.parentElement.style.display = "";
+    columnasAcciones.forEach(col => col.style.display = "");
+};
+
+// 5. Buscador
 export function inicializarBuscadorPrecios() {
     const buscadorPrecios = document.getElementById("buscadorPrecios");
     if (buscadorPrecios) {
