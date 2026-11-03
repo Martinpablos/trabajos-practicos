@@ -28,7 +28,7 @@
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#precios">Lista de Precios</button>
             </li>
             <li class="nav-item">
-                <a href="#ventas" class="nav-link" data-bs-toggle="tab">Cargar Venta</a>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ventas">Cargar Venta</button>
             </li>
             <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#clientes">Clientes</button>
@@ -274,6 +274,119 @@
                     </table>
                 </div>
             </div>
+            <!-- SECCIÓN 5: CARGAR VENTA -->
+            <div class="tab-pane fade" id="ventas">
+                <h2 class="mb-4">Registro de Ventas y Caja</h2>
+            
+                <div class="row">
+                    <!-- COLUMNA IZQUIERDA: CARGAR VENTA Y CARRITO -->
+                    <div class="col-lg-8">
+                        <div class="card custom-card p-4 shadow-sm mb-4">
+                            <h5 class="card-title mb-3">Nueva Venta</h5>
+                            
+                            <form id="formVenta">
+                                <div class="row g-3 mb-3">
+                                    <!-- Selector de Cliente -->
+                                    <div class="col-md-6">
+                                        <label for="selectCliente" class="form-label">Cliente</label>
+                                        <select id="selectCliente" class="form-select" required>
+                                            <option value="">Seleccionar cliente...</option>
+                                        </select>
+                                    </div>
+                                
+                                    <!-- Selector de Producto (Stock) -->
+                                    <div class="col-md-6">
+                                        <label for="selectProductoVenta" class="form-label">Producto Terminado</label>
+                                        <select id="selectProductoVenta" class="form-select">
+                                            <option value="">Seleccionar producto...</option>
+                                        </select>
+                                    </div>
+                                
+                                    <!-- Cantidad -->
+                                    <div class="col-md-4">
+                                        <label for="cantidadVenta" class="form-label">Cantidad</label>
+                                        <input type="number" min="1" value="1" class="form-control" id="cantidadVenta">
+                                    </div>
+                                
+                                    <!-- Botón Agregar al Carrito -->
+                                    <div class="col-md-8 d-flex align-items-end">
+                                        <button type="button" class="btn btn-dark w-100" id="btnAgregarCarrito">➕ Agregar al Carrito</button>
+                                    </div>
+                                </div>
+                            </form>
+                        
+                            <!-- TABLA DEL CARRITO -->
+                            <h6 class="mt-4 mb-2">Carrito de Compras</h6>
+                            <div class="table-responsive mb-3">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Cant.</th>
+                                            <th>Subtotal</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla-carrito">
+                                        <!-- Ítems agregados temporalmente al carrito -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="mb-0">Total: $<span id="totalCarrito">0.00</span></h4>
+                            </div>
+                        
+                            <!-- MEDIO DE PAGO Y BOTÓN FINAL -->
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-6">
+                                    <label for="medioPago" class="form-label">Medio de Pago</label>
+                                    <select id="medioPago" class="form-select" required>
+                                        <option value="efectivo">Efectivo (Contado)</option>
+                                        <option value="transferencia">Transferencia</option>
+                                        <option value="cuenta_corriente">Cuenta Corriente (A pagar después)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-success w-100 py-2 fw-bold" id="btnRegistrarVenta">💾 Registrar Venta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- COLUMNA DERECHA: REGISTRO DE VENTA DIARIO -->
+                    <div class="col-lg-4">
+                        <div class="card custom-card p-3 shadow-sm">
+                            <h5 class="card-title text-center mb-3">Registro Diario</h5>
+                            
+                            <!-- Pestañas de filtrado rápido (General, Contado, Transferencia, Cuentas) -->
+                            <ul class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active btn-sm" data-filtro="todos">General</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link btn-sm" data-filtro="efectivo">Contado</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link btn-sm" data-filtro="transferencia">Transf.</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link btn-sm text-danger" data-filtro="cuenta_corriente">Fiado</button>
+                                </li>
+                            </ul>
+                        
+                            <!-- Lista de ventas registradas -->
+                            <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                                <table class="table table-sm align-middle">
+                                    <tbody id="tabla-registro-diario">
+                                        <!-- Historial de ventas del día -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- MODAL NUEVO / EDITAR CLIENTE -->
             <div class="modal fade" id="modalCliente" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
@@ -285,7 +398,7 @@
                         <div class="modal-body">
                             <form id="formCliente">
                                 <input type="hidden" id="clienteId">
-                                
+
                                 <div class="mb-3">
                                     <label for="nombreCliente" class="form-label">Nombre y Apellido</label>
                                     <input type="text" class="form-control" id="nombreCliente" required>
