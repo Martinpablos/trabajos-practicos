@@ -7,6 +7,7 @@ import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarRece
 import { cargarStockProductos, inicializarBuscadorStock } from "./stock.js";
 import { cargarListaPrecios, inicializarBuscadorPrecios } from "./precios.js";
 import { cargarClientes, inicializarBuscadorClientes } from "./clientes.js";
+import { inicializarSelectsVenta, configurarCarrito, configurarRegistroVenta, cargarRegistroDiario, inicializarFiltrosRegistro } from "./ventas.js";
 
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
@@ -192,6 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Dentro de DOMContentLoaded:
     cargarClientes();
     inicializarBuscadorClientes();
+
+    inicializarSelectsVenta();
+    configurarCarrito();
+    configurarRegistroVenta();
+    cargarRegistroDiario();
+    inicializarFiltrosRegistro();
 
     // Evento botón "+ Agregar Ingrediente" (en el modal de recetas)
     const btnAgregarIngrediente = document.getElementById("btnAgregarFilaIngrediente");
