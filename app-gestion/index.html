@@ -31,6 +31,9 @@
                 <a href="#ventas" class="nav-link" data-bs-toggle="tab">Cargar Venta</a>
             </li>
             <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#clientes">Clientes</button>
+            </li>
+            <li class="nav-item">
                 <a href="#costos" class="nav-link" data-bs-toggle="tab">🔒 Costos / Ganancias</a>
             </li>
         </ul>
@@ -239,6 +242,72 @@
                             <!-- Los precios calculados se cargarán dinámicamente aquí -->
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <!-- SECCIÓN CLIENTES -->
+            <div class="tab-pane fade" id="clientes">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Gestión de Clientes</h2>
+                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalCliente">+ Nuevo Cliente</button>
+                </div>
+            
+                <!-- Buscador de Clientes -->
+                <div class="mb-3">
+                    <input type="text" id="buscadorClientes" class="form-control custom-card" placeholder="🔍 Buscar cliente por nombre o DNI...">
+                </div>
+            
+                <!-- Tabla de Clientes -->
+                <div class="card custom-card p-4 shadow-sm">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Nombre y Apellido</th>
+                                <th>DNI</th>
+                                <th>Teléfono</th>
+                                <th>Cuenta Corriente (Deuda)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-clientes">
+                            <!-- Los clientes se cargarán dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- MODAL NUEVO / EDITAR CLIENTE -->
+            <div class="modal fade" id="modalCliente" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content custom-card">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tituloModalCliente">Registrar Nuevo Cliente</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formCliente">
+                                <input type="hidden" id="clienteId">
+                                
+                                <div class="mb-3">
+                                    <label for="nombreCliente" class="form-label">Nombre y Apellido</label>
+                                    <input type="text" class="form-control" id="nombreCliente" required>
+                                </div>
+                            
+                                <div class="mb-3">
+                                    <label for="dniCliente" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="dniCliente">
+                                </div>
+                            
+                                <div class="mb-3">
+                                    <label for="telefonoCliente" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefonoCliente">
+                                </div>
+                            
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-dark">Guardar Cliente</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- MODAL PARA EDITAR MÁRGENES -->

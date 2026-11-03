@@ -42,7 +42,7 @@ export async function cargarListaPrecios() {
                         </td>
                         <td class="columna-acciones">
                             <button class="btn btn-sm btn-outline-dark" onclick="abrirModalMargenes('${id}', '${producto.nombre}', ${margenMinorista}, ${margenMayorista})">
-                                ✏️ Editar
+                                Editar
                             </button>
                         </td>
                     </tr>
@@ -130,13 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 4. Función para imprimir / exportar PDF prolijo
 window.imprimirListaPrecios = function() {
-    // Ocultamos temporalmente elementos que no deben salir en el PDF (botones y buscador)
-    const buscador = document.getElementById("buscadorPrecios");
-    if (buscador) buscador.parentElement.style.display = "none";
-
-    const columnasAcciones = document.querySelectorAll(".columna-acciones");
-    columnasAcciones.forEach(col => col.style.display = "none");
-
     window.print();
 
     // Restauramos la vista normal después de imprimir
