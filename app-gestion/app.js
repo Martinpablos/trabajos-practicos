@@ -6,6 +6,7 @@ import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc, dele
 import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarReceta, cargarRecetas } from "./recetas.js";
 import { cargarStockProductos, inicializarBuscadorStock } from "./stock.js";
 import { cargarListaPrecios, inicializarBuscadorPrecios } from "./precios.js";
+import { cargarClientes, inicializarBuscadorClientes } from "./clientes.js";
 
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
@@ -187,6 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cargar Lista de Precios y Buscador
     cargarListaPrecios();
     inicializarBuscadorPrecios();
+
+    // Dentro de DOMContentLoaded:
+    cargarClientes();
+    inicializarBuscadorClientes();
 
     // Evento botón "+ Agregar Ingrediente" (en el modal de recetas)
     const btnAgregarIngrediente = document.getElementById("btnAgregarFilaIngrediente");
