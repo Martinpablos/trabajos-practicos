@@ -1,17 +1,25 @@
-import { db } from "./app.js";
-// Nota: Asegurate de importar getAuth, signInWithEmailAndPassword, etc. desde el SDK de auth de firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// Inicializar Auth (asumiendo que app.js exporta la app principal o inicializamos auth con la app)
-// Si en app.js exportás `app`, podés hacer: import { app } from "./app.js"; const auth = getAuth(app);
-const auth = getAuth(); 
+// Tus mismas credenciales de Firebase para que Auth trabaje de forma independiente y segura
+const firebaseConfig = {
+    apiKey: "AIzaSyDa4nqc3-ZWbK51cZPXJeegvyHEYMT_hg",
+    authDomain: "sistema-celi.firebaseapp.com",
+    projectId: "sistema-celi",
+    storageBucket: "sistema-celi.firebasestorage.app",
+    messagingSenderId: "167240526122",
+    appId: "1:167240526122:web:b160382d6c4087a6435653",
+    measurementId: "G-39YYQK8QV"
+};
+
+// Inicializar la app exclusiva para Auth
+const appAuth = initializeApp(firebaseConfig, "authAppName");
+const auth = getAuth(appAuth);
 
 export function inicializarAutenticacionBalance() {
-    const tabBalance = document.querySelector('[data-bs-target="#balance"]');
     const contenidoBalance = document.getElementById("balance");
     if (!contenidoBalance) return;
 
-    // Creamos un contenedor de Login dentro de la pestaña de Balance si no está logueado
     if (!document.getElementById("loginBalanceContainer")) {
         const divLogin = document.createElement("div");
         divLogin.id = "loginBalanceContainer";
@@ -40,14 +48,11 @@ export function inicializarAutenticacionBalance() {
 
     const divLogin = document.getElementById("loginBalanceContainer");
 
-    // Escuchar cambios de estado de autenticación
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // Usuario logueado: Ocultamos el login y mostramos el contenido protegido del balance
             divLogin.style.display = "none";
             contenidoBalance.style.display = "block";
             
-            // Opcional: Agregar botón de cerrar sesión en la solapa de balance
             if (!document.getElementById("btnLogoutAdmin")) {
                 const btnLogout = document.createElement("button");
                 btnLogout.id = "btnLogoutAdmin";
@@ -57,13 +62,11 @@ export function inicializarAutenticacionBalance() {
                 contenidoBalance.prepend(btnLogout);
             }
         } else {
-            // No logueado: Mostramos el login y ocultamos el balance
             divLogin.style.display = "flex";
             contenidoBalance.style.display = "none";
         }
     });
 
-    // Manejar el formulario de inicio de sesión
     const formLogin = document.getElementById("formLoginAdmin");
     if (formLogin) {
         formLogin.addEventListener("submit", async (e) => {

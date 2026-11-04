@@ -9,6 +9,7 @@ import { cargarListaPrecios, inicializarBuscadorPrecios } from "./precios.js";
 import { cargarClientes, inicializarBuscadorClientes } from "./clientes.js";
 import { inicializarSelectsVenta, configurarCarrito, configurarRegistroVenta, cargarRegistroDiario, inicializarFiltrosRegistro } from "./ventas.js";
 import { cargarBalanceYGastos } from "./balance.js";
+import { inicializarAutenticacionBalance } from "./auth.js";
 
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
@@ -21,7 +22,7 @@ const firebaseConfig = {
     measurementId: "G-39YYQFK8QV"
 };
 
-// Inicializar Firebase y EXPORTAR 'db' para que otros archivos la usen
+// Inicializar Firebase (solo exportamos db)
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
@@ -202,6 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarFiltrosRegistro();
 
     cargarBalanceYGastos();
+
+    //DOMContentLoaded:
+    inicializarAutenticacionBalance();
 
     // Evento botón "+ Agregar Ingrediente" (en el modal de recetas)
     const btnAgregarIngrediente = document.getElementById("btnAgregarFilaIngrediente");
