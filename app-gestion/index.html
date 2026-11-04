@@ -35,6 +35,8 @@
             </li>
             <li class="nav-item">
                 <a href="#costos" class="nav-link" data-bs-toggle="tab">🔒 Costos / Ganancias</a>
+            </li><li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#balance">Costos / Ganancias</button>
             </li>
         </ul>
     </div>
@@ -383,6 +385,95 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SECCIÓN 6: COSTOS Y GANANCIAS (BALANCE) -->
+            <div class="tab-pane fade" id="balance">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Balance de Costos y Ganancias</h2>
+                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalGasto">+ Registrar Gasto / Costo</button>
+                </div>
+            
+                <!-- TARJETAS DE RESUMEN FINANCIERO -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="card custom-card p-3 shadow-sm border-success">
+                            <h6 class="text-muted">Ganancia Diaria (Hoy)</h6>
+                            <h3 class="fw-bold text-success" id="gananciaDiaria">$0.00</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card custom-card p-3 shadow-sm border-primary">
+                            <h6 class="text-muted">Ganancia Semanal</h6>
+                            <h3 class="fw-bold text-primary" id="gananciaSemanal">$0.00</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card custom-card p-3 shadow-sm border-dark">
+                            <h6 class="text-muted">Ganancia Neta Mensual</h6>
+                            <h3 class="fw-bold text-dark" id="gananciaMensual">$0.00</h3>
+                            <small class="text-muted">(Ventas - Costos - Gastos)</small>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- TABLA DE GASTOS MENSUALES / OPERATIVOS -->
+                <div class="card custom-card p-4 shadow-sm mb-4">
+                    <h5 class="mb-3">Gastos Operativos del Mes (Servicios, Empleados, Insumos)</h5>
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Concepto / Gasto</th>
+                                <th>Categoría</th>
+                                <th>Monto</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-gastos">
+                            <!-- Los gastos operativos se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- MODAL REGISTRAR GASTO -->
+            <div class="modal fade" id="modalGasto" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content custom-card">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Registrar Nuevo Gasto / Costo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formGasto">
+                                <div class="mb-3">
+                                    <label for="conceptoGasto" class="form-label">Concepto (Ej: Luz, Alquiler, Sueldo)</label>
+                                    <input type="text" class="form-control" id="conceptoGasto" required>
+                                </div>
+                            
+                                <div class="mb-3">
+                                    <label for="categoriaGasto" class="form-label">Categoría</label>
+                                    <select id="categoriaGasto" class="form-select">
+                                        <option value="servicios">Servicios (Luz, Gas, Agua, Internet)</option>
+                                        <option value="empleados">Empleados / Personal</option>
+                                        <option value="materia_prima">Compra de Materia Prima / Insumos</option>
+                                        <option value="alquiler">Alquiler / Local</option>
+                                        <option value="varios">Varios / Otros</option>
+                                    </select>
+                                </div>
+                            
+                                <div class="mb-3">
+                                    <label for="montoGasto" class="form-label">Monto ($)</label>
+                                    <input type="number" step="0.01" class="form-control" id="montoGasto" required>
+                                </div>
+                            
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-dark">Guardar Gasto</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
