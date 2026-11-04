@@ -8,6 +8,7 @@ import { cargarStockProductos, inicializarBuscadorStock } from "./stock.js";
 import { cargarListaPrecios, inicializarBuscadorPrecios } from "./precios.js";
 import { cargarClientes, inicializarBuscadorClientes } from "./clientes.js";
 import { inicializarSelectsVenta, configurarCarrito, configurarRegistroVenta, cargarRegistroDiario, inicializarFiltrosRegistro } from "./ventas.js";
+import { cargarBalanceYGastos } from "./balance.js";
 
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
@@ -199,6 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
     configurarRegistroVenta();
     cargarRegistroDiario();
     inicializarFiltrosRegistro();
+
+    cargarBalanceYGastos();
 
     // Evento botón "+ Agregar Ingrediente" (en el modal de recetas)
     const btnAgregarIngrediente = document.getElementById("btnAgregarFilaIngrediente");
