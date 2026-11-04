@@ -2,18 +2,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Importar las funciones del módulo de recetas
-import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarReceta, cargarRecetas } from "./recetas.js";
-import { cargarStockProductos, inicializarBuscadorStock } from "./stock.js";
-import { cargarListaPrecios, inicializarBuscadorPrecios } from "./precios.js";
-import { cargarClientes, inicializarBuscadorClientes } from "./clientes.js";
-import { inicializarSelectsVenta, configurarCarrito, configurarRegistroVenta, cargarRegistroDiario, inicializarFiltrosRegistro } from "./ventas.js";
-import { cargarBalanceYGastos } from "./balance.js";
-import { inicializarAutenticacionBalance } from "./auth.js";
-
 // Tus credenciales reales de Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDa4nqcc3-ZWbK51cZPxJeegvyHEYMT_hg",
+    apiKey: "AIzaSyDa4nqcc3-ZWBk51cZPxJeegvyHEYMT_hg",
     authDomain: "sistema-celi.firebaseapp.com",
     projectId: "sistema-celi",
     storageBucket: "sistema-celi.firebasestorage.app",
@@ -25,6 +16,15 @@ const firebaseConfig = {
 // Inicializar Firebase (solo exportamos db)
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+// Importar las funciones del módulo de recetas
+import { cargarInsumosParaSelect, agregarFilaIngrediente, guardarOActualizarReceta, cargarRecetas } from "./recetas.js";
+import { cargarStockProductos, inicializarBuscadorStock } from "./stock.js";
+import { cargarListaPrecios, inicializarBuscadorPrecios } from "./precios.js";
+import { cargarClientes, inicializarBuscadorClientes } from "./clientes.js";
+import { inicializarSelectsVenta, configurarCarrito, configurarRegistroVenta, cargarRegistroDiario, inicializarFiltrosRegistro } from "./ventas.js";
+import { cargarBalanceYGastos } from "./balance.js";
+import { inicializarAutenticacionBalance } from "./auth.js";
 
 // ==========================================
 // 1. LÓGICA DE MATERIA PRIMA
