@@ -133,3 +133,17 @@ export function inicializarBuscadorClientes() {
         });
     }
 }
+
+// En lugar de recorrer el snapshot directamente, lo pasamos a un array:
+let listaClientes = [];
+querySnapshot.forEach((docSnap) => {
+    listaClientes.push({ id: docSnap.id, ...docSnap.data() });
+});
+
+// Ordenamos alfabéticamente por el campo 'nombre'
+listaClientes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+// Ahora recorremos la lista ya ordenada para dibujarla en la tabla
+listaClientes.forEach((c) => {
+    // Tu código para pintar la fila en la tabla...s
+});
