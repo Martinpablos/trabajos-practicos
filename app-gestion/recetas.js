@@ -189,28 +189,39 @@ window.eliminarReceta = async function(id) {
 
 // 6. Cargar y renderizar la tabla de Recetas
 export async function cargarRecetas() {
-    const tabla = document.getElementById("tabla-recetas");
+    const tabla = document.getElementById("tabla-recetas"); // Asegurate que coincida con el ID de tu tabla
     if (!tabla) return;
 
     tabla.innerHTML = "";
 
     try {
         const querySnapshot = await getDocs(collection(db, "recetas"));
+        
+        // 1. Pasamos los documentos a un array para poder ordenarlos
+        let listaRecetas = [];
         querySnapshot.forEach((docSnap) => {
-            const receta = docSnap.data();
-            const id = docSnap.id;
+            listaRecetas.push({ id: docSnap.id, ...docSnap.data() });
+        });
 
-            const badgeTipo = receta.tipo === "subreceta" 
-                ? `<span class="badge bg-warning text-dark">Sub-receta</span>` 
-                : `<span class="badge bg-info text-dark">Producto Final</span>`;
+        // 2. Ordenamos alfabéticamente por el campo 'nombre'
+        listaRecetas.sort((a, b) => {
+            const nombreA = a.nombre || "";
+            const nombreB = b.nombre || "";
+            return nombreA.localeCompare(nombreB);
+        });
 
+        // 3. Recorremos el array ya ordenado para armar la tabla
+        // 3. Recorremos el array ya ordenado para armar la tabla respetando todas las columnas
+        listaRecetas.forEach((receta) => {
+            const id = receta.id;
+            
             tabla.innerHTML += `
                 <tr>
                     <td><strong>${receta.nombre || "Sin nombre"}</strong></td>
-                    <td>${badgeTipo}</td>
-                    <td>${receta.rendimiento || 0} u.</td>
+                    <td>${receta.tipo || "-"}</td>
+                    <td>${receta.rendimiento || "-"}</td>
                     <td>$${Number(receta.costoTotal || 0).toFixed(2)}</td>
-                    <td><strong>$${Number(receta.costoUnitario || 0).toFixed(2)}</strong></td>
+                    <td>$${Number(receta.costoUnitario || 0).toFixed(2)}</td>
                     <td>
                         <button class="btn btn-sm btn-outline-secondary me-1" onclick="prepararEdicionReceta('${id}')">Editar</button>
                         <button class="btn btn-sm btn-outline-danger" onclick="eliminarReceta('${id}')">Eliminar</button>
@@ -218,6 +229,7 @@ export async function cargarRecetas() {
                 </tr>
             `;
         });
+
     } catch (e) {
         console.error("Error al cargar recetas: ", e);
     }

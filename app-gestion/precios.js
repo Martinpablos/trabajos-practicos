@@ -3,7 +3,7 @@ import { collection, getDocs, doc, updateDoc, writeBatch } from "https://www.gst
 
 // 1. Cargar y renderizar la tabla de Lista de Precios
 export async function cargarListaPrecios() {
-    const tabla = document.getElementById("tabla-precios");
+    const tabla = document.getElementById("tabla-precios"); // Asegurate que coincida con tu ID
     if (!tabla) return;
 
     tabla.innerHTML = "";
@@ -11,49 +11,61 @@ export async function cargarListaPrecios() {
     try {
         const querySnapshot = await getDocs(collection(db, "recetas"));
         
+        // 1. Creamos un array para guardar solo los productos finales filtrados
+        let listaPrecios = [];
         querySnapshot.forEach((docSnap) => {
             const producto = docSnap.data();
-            const id = docSnap.id;
-
             if (producto.tipo === "producto_final" || producto.tipo === "final") {
-                const costoUnitario = Number(producto.costoUnitario) || 0;
-                
-                const margenMinorista = producto.margenMinorista !== undefined ? Number(producto.margenMinorista) : 100;
-                const margenMayorista = producto.margenMayorista !== undefined ? Number(producto.margenMayorista) : 50;
-
-                const precioMinorista = costoUnitario * (1 + margenMinorista / 100);
-                const precioMayorista = costoUnitario * (1 + margenMayorista / 100);
-
-                tabla.innerHTML += `
-                    <tr class="fila-producto">
-                        <td><strong>${producto.nombre || "Sin nombre"}</strong></td>
-                        <td>$${costoUnitario.toFixed(2)}</td>
-                        <td>
-                            <div class="d-flex flex-column">
-                                <span class="fw-bold text-success fs-6">$${precioMinorista.toFixed(2)}</span>
-                                <small class="text-muted">+${margenMinorista}% ganancia</small>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="d-flex flex-column">
-                                <span class="fw-bold text-primary fs-6">$${precioMayorista.toFixed(2)}</span>
-                                <small class="text-muted">+${margenMayorista}% ganancia</small>
-                            </div>
-                        </td>
-                        <td class="columna-acciones">
-                            <button class="btn btn-sm btn-outline-dark" onclick="abrirModalMargenes('${id}', '${producto.nombre}', ${margenMinorista}, ${margenMayorista})">
-                                Editar
-                            </button>
-                        </td>
-                    </tr>
-                `;
+                listaPrecios.push({ id: docSnap.id, ...producto });
             }
         });
+
+        // 2. Ordenamos alfabéticamente por el nombre del producto
+        listaPrecios.sort((a, b) => {
+            const nombreA = a.nombre || "";
+            const nombreB = b.nombre || "";
+            return nombreA.localeCompare(nombreB);
+        });
+
+        // 3. Recorremos el array ordenado para armar la tabla
+        listaPrecios.forEach((producto) => {
+            const id = producto.id;
+            const costoUnitario = Number(producto.costoUnitario) || 0;
+            const margenMinorista = producto.margenMinorista !== undefined ? Number(producto.margenMinorista) : 100;
+            const margenMayorista = producto.margenMayorista !== undefined ? Number(producto.margenMayorista) : 50;
+
+            const precioMinorista = costoUnitario * (1 + margenMinorista / 100);
+            const precioMayorista = costoUnitario * (1 + margenMayorista / 100);
+
+            tabla.innerHTML += `
+                <tr class="fila-producto">
+                    <td><strong>${producto.nombre || "Sin nombre"}</strong></td>
+                    <td>$${costoUnitario.toFixed(2)}</td>
+                    <td>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold text-success fs-6">$${precioMinorista.toFixed(2)}</span>
+                            <small class="text-muted">+${margenMinorista}% ganancia</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold text-primary fs-6">$${precioMayorista.toFixed(2)}</span>
+                            <small class="text-muted">+${margenMayorista}% ganancia</small>
+                        </div>
+                    </td>
+                    <td class="columna-acciones">
+                        <button class="btn btn-sm btn-outline-dark" onclick="abrirModalMargenes('${id}', '${producto.nombre}', ${margenMinorista}, ${margenMayorista})">
+                            Editar
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+
     } catch (e) {
-        console.error("Error al cargar la lista de precios: ", e);
+        console.error("Error al cargar lista de precios: ", e);
     }
 }
-
 // 2. Abrir modal individual
 window.abrirModalMargenes = function(id, nombre, actualMinorista, actualMayorista) {
     document.getElementById("productoIdMargen").value = id;

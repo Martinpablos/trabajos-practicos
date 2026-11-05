@@ -3,7 +3,7 @@ import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc } from "
 
 // 1. Cargar y renderizar la tabla de Clientes
 export async function cargarClientes() {
-    const tabla = document.getElementById("tabla-clientes");
+    const tabla = document.getElementById("tabla-clientes"); // Asegurate que coincida con el ID de tu tabla
     if (!tabla) return;
 
     tabla.innerHTML = "";
@@ -11,28 +11,34 @@ export async function cargarClientes() {
     try {
         const querySnapshot = await getDocs(collection(db, "clientes"));
         
+        // 1. Pasamos los datos a un array (arreglo)
+        let listaClientes = [];
         querySnapshot.forEach((docSnap) => {
-            const cliente = docSnap.data();
-            const id = docSnap.id;
-            const deudaActual = Number(cliente.deuda) || 0;
+            listaClientes.push({ id: docSnap.id, ...docSnap.data() });
+        });
 
+        // 2. Ordenamos alfabéticamente por el campo 'nombre'
+        listaClientes.sort((a, b) => {
+            const nombreA = a.nombre || "";
+            const nombreB = b.nombre || "";
+            return nombreA.localeCompare(nombreB);
+        });
+
+        // 3. Recorremos el array ya ordenado para armar la tabla
+        listaClientes.forEach((c) => {
             tabla.innerHTML += `
                 <tr>
-                    <td><strong>${cliente.nombre || "Sin nombre"}</strong></td>
-                    <td>${cliente.dni || "-"}</td>
-                    <td>${cliente.telefono || "-"}</td>
+                    <td>${c.nombre}</td>
+                    <td>${c.dni || 'S/N'}</td>
+                    <td>${c.telefono || '-'}</td>
+                    <td>$${(Number(c.deuda) || 0).toFixed(2)}</td>
                     <td>
-                        <span class="fw-bold ${deudaActual > 0 ? 'text-danger' : 'text-success'}">
-                            $${deudaActual.toFixed(2)}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-secondary me-1" onclick="editarCliente('${id}')">Editar</button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="eliminarCliente('${id}')">Eliminar</button>
+                        <!-- tus botones de acción -->
                     </td>
                 </tr>
             `;
         });
+
     } catch (e) {
         console.error("Error al cargar clientes: ", e);
     }
@@ -134,16 +140,3 @@ export function inicializarBuscadorClientes() {
     }
 }
 
-// En lugar de recorrer el snapshot directamente, lo pasamos a un array:
-let listaClientes = [];
-querySnapshot.forEach((docSnap) => {
-    listaClientes.push({ id: docSnap.id, ...docSnap.data() });
-});
-
-// Ordenamos alfabéticamente por el campo 'nombre'
-listaClientes.sort((a, b) => a.nombre.localeCompare(b.nombre));
-
-// Ahora recorremos la lista ya ordenada para dibujarla en la tabla
-listaClientes.forEach((c) => {
-    // Tu código para pintar la fila en la tabla...s
-});

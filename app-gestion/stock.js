@@ -2,6 +2,7 @@ import { db } from "./app.js";
 import { collection, getDocs, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // 1. Cargar y renderizar la tabla de Stock (filtrando solo Productos Finales)
+// 1. Cargar y renderizar la tabla de Stock (filtrando solo Productos Finales)
 export async function cargarStockProductos() {
     const tabla = document.getElementById("tabla-stock");
     if (!tabla) return;
@@ -11,39 +12,53 @@ export async function cargarStockProductos() {
     try {
         const querySnapshot = await getDocs(collection(db, "recetas"));
         
+        // 1. Creamos un array para guardar solo los productos finales que cumplan la condición
+        let listaStock = [];
         querySnapshot.forEach((docSnap) => {
             const receta = docSnap.data();
-            const id = docSnap.id;
-
-            // Solo mostramos en Stock los Productos Finales
+            // Solo filtramos los productos finales
             if (receta.tipo === "producto_final" || receta.tipo === "final") {
-                const stockActual = Number(receta.stock) || 0;
-                const costoUnitario = Number(receta.costoUnitario) || 0;
-                const valorTotalStock = stockActual * costoUnitario;
-
-                tabla.innerHTML += `
-                    <tr>
-                        <td><strong>${receta.nombre || "Sin nombre"}</strong></td>
-                        <td>
-                            <div class="d-flex align-items-center gap-2">
-                                <button class="btn btn-sm btn-outline-danger px-2" onclick="modificarStock('${id}', -1)">-</button>
-                                <span class="fs-6 fw-bold px-2">${stockActual} u.</span>
-                                <button class="btn btn-sm btn-outline-success px-2" onclick="modificarStock('${id}', 1)">+</button>
-                            </div>
-                        </td>
-                        <td>$${costoUnitario.toFixed(2)}</td>
-                        <td><strong>$${valorTotalStock.toFixed(2)}</strong></td>
-                        <td>
-                            <button class="btn btn-sm btn-outline-primary" onclick="abrirModalAjuste('${id}', '${receta.nombre}', ${stockActual})">Ajustar</button>
-                        </td>
-                    </tr>
-                `;
+                listaStock.push({ id: docSnap.id, ...receta });
             }
         });
+
+        // 2. Ordenamos alfabéticamente por el nombre
+        listaStock.sort((a, b) => {
+            const nombreA = a.nombre || "";
+            const nombreB = b.nombre || "";
+            return nombreA.localeCompare(nombreB);
+        });
+
+        // 3. Recorremos el array ya ordenado para pintar la tabla
+        listaStock.forEach((receta) => {
+            const id = receta.id;
+            const stockActual = Number(receta.stock) || 0;
+            const costoUnitario = Number(receta.costoUnitario) || 0;
+            const valorTotalStock = stockActual * costoUnitario;
+
+            tabla.innerHTML += `
+                <tr>
+                    <td><strong>${receta.nombre || "Sin nombre"}</strong></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-danger px-2" onclick="modificarStock('${id}', -1)">-</button>
+                            <span class="fs-6 fw-bold px-2">${stockActual} u.</span>
+                            <button class="btn btn-sm btn-outline-success px-2" onclick="modificarStock('${id}', 1)">+</button>
+                        </div>
+                    </td>
+                    <td>$${costoUnitario.toFixed(2)}</td>
+                    <td><strong>$${valorTotalStock.toFixed(2)}</strong></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="abrirModalAjuste('${id}', '${receta.nombre}', ${stockActual})">Ajustar</button>
+                    </td>
+                </tr>
+            `;
+        });
+
     } catch (e) {
         console.error("Error al cargar el stock de productos: ", e);
     }
-};
+}
 
 // 2. Modificar stock y descontar/reintegrar materia prima automáticamente
 window.modificarStock = async function(idReceta, cambio) {

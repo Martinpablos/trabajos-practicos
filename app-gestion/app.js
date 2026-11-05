@@ -35,14 +35,27 @@ async function cargarMateriasPrimas() {
     const tabla = document.getElementById("tabla-materia-prima");
     if (!tabla) return;
 
-    tabla.innerHTML = ""; 
-    
+    tabla.innerHTML = "";
+
     try {
         const querySnapshot = await getDocs(collection(db, "materiaPrima"));
+        
+        // 1. Pasamos los documentos a un array para poder ordenarlos
+        let listaMaterias = [];
         querySnapshot.forEach((docSnap) => {
-            const item = docSnap.data();
-            const id = docSnap.id;
-            
+            listaMaterias.push({ id: docSnap.id, ...docSnap.data() });
+        });
+
+        // 2. Ordenamos alfabéticamente por el campo 'nombre'
+        listaMaterias.sort((a, b) => {
+            const nombreA = a.nombre || "";
+            const nombreB = b.nombre || "";
+            return nombreA.localeCompare(nombreB);
+        });
+
+        // 3. Recorremos el array ya ordenado para armar la tabla
+        listaMaterias.forEach((item) => {
+            const id = item.id;
             const cantidad = Number(item.cantidad) || 0;
             const precio = Number(item.precio) || 0;
             const stock = Number(item.stock) || 0;
@@ -54,7 +67,7 @@ async function cargarMateriasPrimas() {
                     <td>${cantidad}</td>
                     <td>$${precio}</td>
                     <td>$${costoUnitario}</td>
-                    <td><span class="badge bg-success">Disponible (${stock}u)</span></td>
+                    <td><span class="badge bg-success">Disponible (${stock})</span></td>
                     <td>
                         <button class="btn btn-sm btn-outline-secondary me-1" onclick="prepararEdicion('${id}')">Editar</button>
                         <button class="btn btn-sm btn-outline-danger" onclick="eliminarMateriaPrima('${id}')">Eliminar</button>
@@ -62,6 +75,7 @@ async function cargarMateriasPrimas() {
                 </tr>
             `;
         });
+
     } catch (e) {
         console.error("Error al cargar datos de Firebase: ", e);
     }
