@@ -1,5 +1,5 @@
 import { db } from "./app.js";
-import { collection, getDocs, addDoc, doc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { collection, getDocs, addDoc, doc, deleteDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // 1. Cargar Gastos y Calcular Balance Financiero
 export async function cargarBalanceYGastos() {
@@ -19,8 +19,22 @@ export async function cargarBalanceYGastos() {
             const monto = Number(g.monto) || 0;
             totalGastosMes += monto;
 
-            // Formato fecha simple si existe
-            const fechaStr = g.fecha ? new Date(g.fecha.toDate()).toLocaleDateString() : "Hoy";
+            // Formato de fecha del gasto
+            let fechaStr = "Hoy";
+            if (g.fecha) {
+                // Si viene de Firestore Timestamp o de string de input date ('YYYY-MM-DD')
+                if (typeof g.fecha.toDate === 'function') {
+                    fechaStr = g.fecha.toDate().toLocaleDateString();
+                } else {
+                    // Si se guardó como string de fecha local, lo formateamos prolijo
+                    const partes = g.fecha.split('-');
+                    if (partes.length === 3) {
+                        fechaStr = `${partes[2]}/${partes[1]}/${partes[0]}`;
+                    } else {
+                        fechaStr = g.fecha;
+                    }
+                }
+            }
 
             tablaGastos.innerHTML += `
                 <tr>
@@ -72,7 +86,6 @@ export async function cargarBalanceYGastos() {
         });
 
         // C. Calcular Ganancia Neta Mensual (Ventas Mensuales - Gastos Mensuales)
-        // (Nota: Las ventas ya contemplan el precio minorista vs costo, pero restamos los gastos operativos fijos y variables)
         const gananciaMensualNeta = ventaMensual - totalGastosMes;
 
         // D. Renderizar en las tarjetas de la interfaz
@@ -85,9 +98,17 @@ export async function cargarBalanceYGastos() {
     }
 }
 
-// 2. Guardar nuevo gasto
+// 2. Guardar nuevo gasto con fecha seleccionada
 document.addEventListener("DOMContentLoaded", () => {
     const formGasto = document.getElementById("formGasto");
+    
+    // Auto-completar la fecha de hoy en el input si existe al cargar la página
+    const inputFecha = document.getElementById("fechaGasto");
+    if (inputFecha && !inputFecha.value) {
+        const hoy = new Date().toISOString().split('T')[0];
+        inputFecha.value = hoy;
+    }
+
     if (formGasto) {
         formGasto.addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -95,16 +116,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const concepto = document.getElementById("conceptoGasto").value;
             const categoria = document.getElementById("categoriaGasto").value;
             const monto = Number(document.getElementById("montoGasto").value) || 0;
+            const fechaSeleccionada = document.getElementById("fechaGasto").value; // Obtenemos la fecha del input
 
             try {
                 await addDoc(collection(db, "gastos"), {
                     concepto,
                     categoria,
                     monto,
-                    fecha: serverTimestamp()
+                    fecha: fechaSeleccionada // Guardamos la fecha elegida
                 });
 
                 formGasto.reset();
+                
+                // Volver a setear la fecha de hoy por si abre de nuevo el modal rápido
+                if (inputFecha) {
+                    inputFecha.value = new Date().toISOString().split('T')[0];
+                }
+
                 const modalElement = document.getElementById("modalGasto");
                 bootstrap.Modal.getInstance(modalElement).hide();
 
