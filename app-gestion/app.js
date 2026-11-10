@@ -249,3 +249,88 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+// buscador de recetas
+const buscadorRecetas = document.getElementById("buscadorRecetas"); // Asegúrate de que el input en tu HTML de recetas tenga este ID
+if (buscadorRecetas) {
+    buscadorRecetas.addEventListener("input", (e) => {
+        const textoBusqueda = e.target.value.toLowerCase();
+        const filas = document.querySelectorAll("#tabla-recetas tr"); // Apunta a la tabla de recetas
+
+        filas.forEach(fila => {
+            const celdaNombre = fila.querySelector("td");
+            if (celdaNombre) {
+                const nombreReceta = celdaNombre.textContent.toLowerCase();
+                if (nombreReceta.includes(textoBusqueda)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            }
+        });
+    });
+}
+
+//buscador de stock de productos
+const buscadorStock = document.getElementById("buscadorStock");
+if (buscadorStock) {
+    buscadorStock.addEventListener("input", (e) => {
+        const textoBusqueda = e.target.value.toLowerCase();
+        const filas = document.querySelectorAll("#tabla-stock tr");
+
+        filas.forEach(fila => {
+            const celdaNombre = fila.querySelector("td");
+            if (celdaNombre) {
+                const nombre = celdaNombre.textContent.toLowerCase();
+                if (nombre.includes(textoBusqueda)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            }
+        });
+    });
+}
+
+//buscador de precios
+const buscadorPrecios = document.getElementById("buscadorPrecios");
+if (buscadorPrecios) {
+    buscadorPrecios.addEventListener("input", (e) => {
+        const textoBusqueda = e.target.value.toLowerCase();
+        const filas = document.querySelectorAll("#tabla-precios tr");
+
+        filas.forEach(fila => {
+            const celdaNombre = fila.querySelector("td");
+            if (celdaNombre) {
+                const nombre = celdaNombre.textContent.toLowerCase();
+                if (nombre.includes(textoBusqueda)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            }
+        });
+    });
+}
+
+//buscador de clientes
+const buscadorClientes = document.getElementById("buscadorClientes");
+if (buscadorClientes) {
+    buscadorClientes.addEventListener("input", (e) => {
+        const textoBusqueda = e.target.value.toLowerCase();
+        const filas = document.querySelectorAll("#tabla-clientes tr");
+
+        filas.forEach(fila => {
+            const celdaNombre = fila.querySelector("td");
+            if (celdaNombre) {
+                const nombre = celdaNombre.textContent.toLowerCase();
+                if (nombre.includes(textoBusqueda)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            }
+        });
+    });
+}
