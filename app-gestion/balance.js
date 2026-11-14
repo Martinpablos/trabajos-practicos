@@ -135,10 +135,12 @@ document.addEventListener("DOMContentLoaded", () => {
         inputFecha.value = hoy;
     }
 
-    // Inicializar selector de mes al cargar si existe
+    // Inicializar selector de mes al cargar si existe (¡Acá queda registrado de forma limpia!)
     const inputFiltroMes = document.getElementById("filtroMesBalance");
     if (inputFiltroMes) {
-        inputFiltroMes.addEventListener("change", cargarBalanceYGastos);
+        inputFiltroMes.addEventListener("change", () => {
+            cargarBalanceYGastos();
+        });
     }
 
     if (formGasto) {
@@ -173,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch (e) {
                 console.error("Error al registrar gasto: ", e);
             }
-        });
+        });s
     }
 });
 

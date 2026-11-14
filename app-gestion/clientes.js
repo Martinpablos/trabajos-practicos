@@ -205,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     formPago.reset();
                     cargarClientes();
+                }
             } catch (error) {
                 console.error("Error al registrar el pago: ", error);
                 alert("Hubo un error al procesar el pago.");
