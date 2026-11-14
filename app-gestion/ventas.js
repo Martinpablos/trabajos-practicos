@@ -151,14 +151,45 @@ export function configurarRegistroVenta() {
                 fecha: serverTimestamp()
             });
 
-            // B. Descontar stock de los productos terminados vendidos
+            // B. Descontar stock de productos terminados y de sus materias primas (ingredientes)
             for (const item of carrito) {
-                const refReceta = doc(db, "recetas", item.idProducto);
+                const idReceta = item.idProducto;
+                const cantidadVendida = Number(item.cantidad) || 0;
+
+                const refReceta = doc(db, "recetas", idReceta);
                 const snapReceta = await getDoc(refReceta);
+
                 if (snapReceta.exists()) {
-                    const stockActual = Number(snapReceta.data().stock) || 0;
-                    const nuevoStock = Math.max(0, stockActual - item.cantidad);
-                    await updateDoc(refReceta, { stock: nuevoStock });
+                    const recetaData = snapReceta.data();
+                    
+                    // 1. Descontar stock del producto terminado
+                    const stockActualReceta = Number(recetaData.stock) || 0;
+                    const nuevoStockReceta = Math.max(0, stockActualReceta - cantidadVendida);
+                    await updateDoc(refReceta, { stock: nuevoStockReceta });
+
+                    // 2. Descontar stock de cada materia prima/ingrediente utilizado
+                    if (recetaData.ingredientes && Array.isArray(recetaData.ingredientes)) {
+                        for (const ing of recetaData.ingredientes) {
+                            // ing.idInsumo tiene el ID de la materia prima
+                            // ing.cantidadUsada es lo que consume 1 sola unidad de la receta
+                            if (ing.idInsumo && ing.idInsumo !== "no-encontrado") {
+                                const totalDescontar = ing.cantidadUsada * cantidadVendida;
+
+                                const refMateria = doc(db, "materiaPrima", ing.idInsumo);
+                                const snapMateria = await getDoc(refMateria);
+
+                                if (snapMateria.exists()) {
+                                    const materiaData = snapMateria.data();
+                                    // Usamos el campo "stock" para restar el inventario físico, 
+                                    // dejando intactos 'cantidad' y 'precio' para que el costo no se altere.
+                                    const stockMateriaActual = Number(materiaData.stock) || 0;
+                                    const nuevoStockMateria = Math.max(0, stockMateriaActual - totalDescontar);
+
+                                    await updateDoc(refMateria, { stock: nuevoStockMateria });
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -172,7 +203,7 @@ export function configurarRegistroVenta() {
                 }
             }
 
-            alert("¡Venta registrada con éxito!");
+            alert("¡Venta registrada con éxito y stock actualizado!");
             
             // Limpiar carrito y formulario
             carrito = [];

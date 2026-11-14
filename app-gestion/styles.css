@@ -88,3 +88,27 @@ body {
         display: none !important;
     }
 }
+
+@media print {
+    /* Ocultamos los botones, el buscador y las acciones de la tabla al imprimir */
+    .columna-acciones, #buscadorPrecios, .btn, nav, sidebar {
+        display: none !important;
+    }
+
+    /* Si imprimimos Minorista, ocultamos la columna de precio Mayorista */
+    body.modo-impresion-minorista th:nth-child(4),
+    body.modo-impresion-minorista td:nth-child(4) {
+        display: none !important;
+    }
+
+    /* Si imprimimos Mayorista, ocultamos la columna de precio Minorista */
+    body.modo-impresion-mayorista th:nth-child(3),
+    body.modo-impresion-mayorista td:nth-child(3) {
+        display: none !important;
+    }
+
+    /* Ocultamos los textos de porcentajes en cualquier modo de impresión */
+    small.text-muted {
+        display: none !important;
+    }
+}

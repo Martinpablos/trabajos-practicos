@@ -140,15 +140,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// 4. Función para imprimir / exportar PDF prolijo
-window.imprimirListaPrecios = function() {
+// 4. Imprimir Lista Minorista (Oculta porcentajes y precio mayorista)
+window.imprimirMinorista = function() {
+    document.body.classList.add("modo-impresion-minorista");
     window.print();
-
-    // Restauramos la vista normal después de imprimir
-    if (buscador) buscador.parentElement.style.display = "";
-    columnasAcciones.forEach(col => col.style.display = "");
+    document.body.classList.remove("modo-impresion-minorista");
 };
 
+// 4.1. Imprimir Lista Mayorista (Oculta porcentajes y precio minorista)
+window.imprimirMayorista = function() {
+    document.body.classList.add("modo-impresion-mayorista");
+    window.print();
+    document.body.classList.remove("modo-impresion-mayorista");
+};
 // 5. Buscador
 export function inicializarBuscadorPrecios() {
     const buscadorPrecios = document.getElementById("buscadorPrecios");
