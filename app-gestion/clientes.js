@@ -196,12 +196,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     alert(`¡Pago registrado con éxito! Nueva deuda: $${nuevaDeuda.toFixed(2)}`);
 
-                    // Cerrar modal y recargar tabla
+                    // Cerrar modal y recargar tabla de forma limpia
+                    document.activeElement.blur();
                     const modalElement = document.getElementById("modalPago");
-                    bootstrap.Modal.getInstance(modalElement).hide();
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
                     formPago.reset();
                     cargarClientes();
-                }
             } catch (error) {
                 console.error("Error al registrar el pago: ", error);
                 alert("Hubo un error al procesar el pago.");
