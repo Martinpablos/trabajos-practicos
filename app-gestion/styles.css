@@ -90,24 +90,36 @@ body {
 }
 
 @media print {
-    /* Ocultamos los botones, el buscador y las acciones de la tabla al imprimir */
-    .columna-acciones, #buscadorPrecios, .btn, nav, sidebar {
+    /* Ocultamos elementos innecesarios generales */
+    .columna-acciones, #buscadorPrecios, .btn, nav, sidebar, header {
         display: none !important;
     }
 
-    /* Si imprimimos Minorista, ocultamos la columna de precio Mayorista */
+    /* 1. Ocultamos siempre la columna 2 (Costo de Producción) al imprimir */
+    th:nth-child(2),
+    td:nth-child(2) {
+        display: none !important;
+    }
+
+    /* 2. Ocultamos siempre la columna 5 (Acciones) al imprimir */
+    th:nth-child(5),
+    td:nth-child(5) {
+        display: none !important;
+    }
+
+    /* Si imprimimos Minorista, ocultamos la columna de precio Mayorista (Columna 4) */
     body.modo-impresion-minorista th:nth-child(4),
     body.modo-impresion-minorista td:nth-child(4) {
         display: none !important;
     }
 
-    /* Si imprimimos Mayorista, ocultamos la columna de precio Minorista */
+    /* Si imprimimos Mayorista, ocultamos la columna de precio Minorista (Columna 3) */
     body.modo-impresion-mayorista th:nth-child(3),
     body.modo-impresion-mayorista td:nth-child(3) {
         display: none !important;
     }
 
-    /* Ocultamos los textos de porcentajes en cualquier modo de impresión */
+    /* Ocultamos los textos de porcentajes por seguridad */
     small.text-muted {
         display: none !important;
     }

@@ -60,7 +60,7 @@ export async function cargarStockProductos() {
     }
 }
 
-// 2. Modificar stock y descontar/reintegrar materia prima automáticamente
+// 2. Modificar stock del producto final de forma independiente y limpia
 window.modificarStock = async function(idReceta, cambio) {
     try {
         const refReceta = doc(db, "recetas", idReceta);
@@ -72,36 +72,14 @@ window.modificarStock = async function(idReceta, cambio) {
         const stockActual = Number(recetaData.stock) || 0;
         const nuevoStock = Math.max(0, stockActual + cambio); // Evita stock negativo de productos
 
-        // Si estamos SUMANDO producción (ej. +1 o +4), descontamos la materia prima proporcionalmente
-        if (cambio > 0 && recetaData.ingredientes && Array.isArray(recetaData.ingredientes)) {
-            for (const ing of recetaData.ingredientes) {
-                const idInsumo = ing.idInsumo;
-                const cantidadPorUnidad = Number(ing.cantidadUsada) || 0;
-                const cantidadTotalADescontar = cantidadPorUnidad * cambio;
-
-                const refInsumo = doc(db, "materiaPrima", idInsumo);
-                const snapInsumo = await getDoc(refInsumo);
-
-                if (snapInsumo.exists()) {
-                    const insumoData = snapInsumo.data();
-                    const cantidadActualInsumo = Number(insumoData.cantidad) || 0;
-                    
-                    // Restamos del stock de materia prima (asegurando que no baje de 0)
-                    const nuevaCantidadInsumo = Math.max(0, cantidadActualInsumo - cantidadTotalADescontar);
-                    
-                    await updateDoc(refInsumo, { cantidad: nuevaCantidadInsumo });
-                }
-            }
-        }
-
-        // Actualizamos el stock del producto final
+        // Actualizamos únicamente el stock del producto final, sin tocar materias primas ni costos
         await updateDoc(refReceta, { stock: nuevoStock });
         
         // Refrescamos la tabla de stock en pantalla
         cargarStockProductos();
 
     } catch (e) {
-        console.error("Error al modificar stock y descontar insumos: ", e);
+        console.error("Error al modificar el stock del producto: ", e);
     }
 };
 

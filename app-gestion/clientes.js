@@ -28,6 +28,11 @@ export async function cargarClientes() {
         listaClientes.forEach((c) => {
             tabla.innerHTML += `
                 <tr>
+                    <td>
+                        <button class="btn btn-sm btn-outline-success me-1" onclick="abrirModalPago('${c.id}', '${c.nombre}', ${c.deuda || 0})">💵 Pagar</button>
+                        <button class="btn btn-sm btn-outline-secondary me-1" onclick="editarCliente('${c.id}')">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="eliminarCliente('${c.id}')">Eliminar</button>
+                    </td>
                     <td>${c.nombre}</td>
                     <td>${c.dni || 'S/N'}</td>
                     <td>${c.telefono || '-'}</td>
@@ -140,3 +145,67 @@ export function inicializarBuscadorClientes() {
     }
 }
 
+// 6. Abrir modal para registrar pago de deuda
+window.abrirModalPago = function(id, nombre, deudaActual) {
+    document.getElementById("pagoClienteId").value = id;
+    document.getElementById("tituloModalPago").textContent = `Registrar Pago: ${nombre} (Deuda actual: $${deudaActual.toFixed(2)})`;
+    document.getElementById("montoPago").value = "";
+
+    const modalElement = document.getElementById("modalPago");
+    if (modalElement) {
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    }
+};
+
+// 7. Procesar el pago del cliente
+document.addEventListener("DOMContentLoaded", () => {
+    const formPago = document.getElementById("formPago");
+    if (formPago) {
+        formPago.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const idCliente = document.getElementById("pagoClienteId").value;
+            const montoAbonado = Number(document.getElementById("montoPago").value) || 0;
+
+            if (montoAbonado <= 0) {
+                alert("Por favor, ingresá un monto válido.");
+                return;
+            }
+
+            try {
+                const refCliente = doc(db, "clientes", idCliente);
+                const snapCliente = await getDoc(refCliente);
+
+                if (snapCliente.exists()) {
+                    const dataCliente = snapCliente.data();
+                    const deudaActual = Number(dataCliente.deuda) || 0;
+
+                    // Restamos el pago a la deuda (evitamos que quede en negativo por seguridad)
+                    const nuevaDeuda = Math.max(0, deudaActual - montoAbonado);
+
+                    await updateDoc(refCliente, { deuda: nuevaDeuda });
+
+                    // Opcional: Registrar el ingreso en la colección de caja o ventas si lo deseas
+                    await addDoc(collection(db, "pagosClientes"), {
+                        idCliente,
+                        nombreCliente: dataCliente.nombre,
+                        monto: montoAbonado,
+                        fecha: new Date()
+                    });
+
+                    alert(`¡Pago registrado con éxito! Nueva deuda: $${nuevaDeuda.toFixed(2)}`);
+
+                    // Cerrar modal y recargar tabla
+                    const modalElement = document.getElementById("modalPago");
+                    bootstrap.Modal.getInstance(modalElement).hide();
+                    formPago.reset();
+                    cargarClientes();
+                }
+            } catch (error) {
+                console.error("Error al registrar el pago: ", error);
+                alert("Hubo un error al procesar el pago.");
+            }
+        });
+    }
+});
