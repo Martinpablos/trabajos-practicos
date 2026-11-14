@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch (e) {
                 console.error("Error al registrar gasto: ", e);
             }
-        });s
+        });
     }
 });
 
